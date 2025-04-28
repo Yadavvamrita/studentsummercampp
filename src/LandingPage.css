@@ -76,10 +76,10 @@ html, body {
 }
 
 .nav-links li a:hover {
-  background: #7c3aed;
-  color: white;
+  background: #f3f0ff;
+  color: #7c3aed;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
 }
 
 .nav-links li a.active {
@@ -87,19 +87,6 @@ html, body {
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-  }
-  50% {
-    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
-  }
-  100% {
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
-  }
 }
 
 /* Register Button */
