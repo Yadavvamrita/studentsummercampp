@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./LandingPage.css";
 
-const courses = [
+const classList = [
   "Art & Craft",
   "Robotics",
   "Music",
@@ -12,11 +12,12 @@ const courses = [
 
 const StudentForm = () => {
   const [form, setForm] = useState({
-    name: "",
-    class: "",
-    place: "",
-    school: "",
-    selectedCourses: []
+    firstName: "",
+    lastName: "",
+    gender: "",
+    email: "",
+    studentId: "",
+    className: ""
   });
   const [error, setError] = useState("");
 
@@ -24,70 +25,61 @@ const StudentForm = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleCourseChange = (e) => {
-    const value = e.target.value;
-    let updated = [...form.selectedCourses];
-    if (updated.includes(value)) {
-      updated = updated.filter((c) => c !== value);
-    } else {
-      if (updated.length < 2) {
-        updated.push(value);
-      } else {
-        setError("You can select up to two courses only.");
-        return;
-      }
-    }
-    setError("");
-    setForm({ ...form, selectedCourses: updated });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.name || !form.class || !form.place || !form.school) {
+    if (!form.firstName || !form.lastName || !form.gender || !form.email || !form.studentId || !form.className) {
       setError("Please fill all the fields.");
       return;
     }
-    if (form.selectedCourses.length < 1) {
-      setError("Please select at least one course.");
-      return;
-    }
     setError("");
-    alert(`Student Details:\nName: ${form.name}\nClass: ${form.class}\nPlace: ${form.place}\nSchool: ${form.school}\nCourses: ${form.selectedCourses.join(", ")}`);
-    setForm({ name: "", class: "", place: "", school: "", selectedCourses: [] });
+    alert(`Student Details:\nName: ${form.firstName} ${form.lastName}\nGender: ${form.gender}\nEmail: ${form.email}\nStudent ID: ${form.studentId}\nClass: ${form.className}`);
+    setForm({ firstName: "", lastName: "", gender: "", email: "", studentId: "", className: "" });
   };
 
   return (
-    <div className="form-container">
-      <h2>Student Registration Form</h2>
-      <form className="student-form" onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input name="name" value={form.name} onChange={handleChange} required />
-        <label>Class</label>
-        <input name="class" value={form.class} onChange={handleChange} required />
-        <label>Place</label>
-        <input name="place" value={form.place} onChange={handleChange} required />
-        <label>School</label>
-        <input name="school" value={form.school} onChange={handleChange} required />
-        <label>Choose Courses (max 2)</label>
-        <div className="course-options">
-          {courses.map((course) => (
-            <label key={course} className="course-checkbox">
-              <input
-                type="checkbox"
-                value={course}
-                checked={form.selectedCourses.includes(course)}
-                onChange={handleCourseChange}
-                disabled={
-                  !form.selectedCourses.includes(course) && form.selectedCourses.length >= 2
-                }
-              />
-              {course}
-            </label>
-          ))}
-        </div>
-        {error && <div className="form-error">{error}</div>}
-        <button type="submit" className="cta-btn" style={{marginTop: '1.5rem'}}>Submit</button>
-      </form>
+    <div className="form-bg">
+      <div className="form-card">
+        <h2 className="form-title">Registration Form</h2>
+        <div className="form-subtitle">Fill out the form carefully for registration</div>
+        <form className="student-form-grid" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Student Name</label>
+            <div className="form-row">
+              <input name="firstName" placeholder="First Name" value={form.firstName} onChange={handleChange} />
+              <input name="lastName" placeholder="Last Name" value={form.lastName} onChange={handleChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <label>Gender</label>
+            <select name="gender" value={form.gender} onChange={handleChange}>
+              <option value="">Please Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Student E-mail</label>
+            <input name="email" type="email" placeholder="ex: myname@example.com" value={form.email} onChange={handleChange} />
+            <div className="form-hint">example@example.com</div>
+          </div>
+          <div className="form-group">
+            <label>Student ID</label>
+            <input name="studentId" placeholder="Student ID" value={form.studentId} onChange={handleChange} />
+          </div>
+          <div className="form-group">
+            <label>List of Classes</label>
+            <select name="className" value={form.className} onChange={handleChange}>
+              <option value="">Please Select</option>
+              {classList.map((cls) => (
+                <option key={cls} value={cls}>{cls}</option>
+              ))}
+            </select>
+          </div>
+          {error && <div className="form-error">{error}</div>}
+          <button type="submit" className="form-submit-btn">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };
