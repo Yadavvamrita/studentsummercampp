@@ -486,7 +486,7 @@ html, body {
   }
   
   .landing-nav {
-    flex-direction: row;
+    flex-direction: column;
     padding: 1rem;
     gap: 1rem;
     position: fixed;
@@ -495,8 +495,6 @@ html, body {
     right: 0;
     background: #fff;
     z-index: 1000;
-    justify-content: space-between;
-    align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
   
@@ -505,14 +503,37 @@ html, body {
     font-size: 1.5rem;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   
   .nav-links {
-    display: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    background: #f3f0ff;
+    color: #7c3aed;
   }
   
   .nav-register-btn {
-    margin: 0;
+    margin: 0.5rem auto 0;
     padding: 0.6rem 1.2rem;
     font-size: 1rem;
     background: #7c3aed;
@@ -520,13 +541,16 @@ html, body {
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
+    display: block;
+    text-align: center;
+    max-width: 200px;
   }
   
   .landing-main {
     flex-direction: column;
     padding: 1rem;
     gap: 2rem;
-    margin-top: 4rem;
+    margin-top: 8rem; /* Increased margin to account for full nav height */
   }
   
   .landing-content {
@@ -597,13 +621,22 @@ html, body {
     font-size: 1.3rem;
   }
   
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-links li a {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
   .nav-register-btn {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
   
   .landing-main {
-    margin-top: 3.5rem;
+    margin-top: 7rem;
   }
   
   .landing-title {
@@ -640,13 +673,22 @@ html, body {
     font-size: 1.2rem;
   }
   
+  .nav-links {
+    gap: 0.8rem;
+  }
+  
+  .nav-links li a {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
   .nav-register-btn {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
   }
   
   .landing-main {
-    margin-top: 3rem;
+    margin-top: 6rem;
   }
   
   .landing-title {
