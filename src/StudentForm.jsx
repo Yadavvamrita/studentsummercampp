@@ -16,7 +16,6 @@ const StudentForm = () => {
     lastName: "",
     gender: "",
     email: "",
-    studentId: "",
     className: ""
   });
   const [error, setError] = useState("");
@@ -27,13 +26,13 @@ const StudentForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.firstName || !form.lastName || !form.gender || !form.email || !form.studentId || !form.className) {
+    if (!form.firstName || !form.lastName || !form.gender || !form.email || !form.className) {
       setError("Please fill all the fields.");
       return;
     }
     setError("");
-    alert(`Student Details:\nName: ${form.firstName} ${form.lastName}\nGender: ${form.gender}\nEmail: ${form.email}\nStudent ID: ${form.studentId}\nClass: ${form.className}`);
-    setForm({ firstName: "", lastName: "", gender: "", email: "", studentId: "", className: "" });
+    alert(`Student Details:\nName: ${form.firstName} ${form.lastName}\nGender: ${form.gender}\nEmail: ${form.email}\nClass: ${form.className}`);
+    setForm({ firstName: "", lastName: "", gender: "", email: "", className: "" });
   };
 
   return (
@@ -62,10 +61,6 @@ const StudentForm = () => {
             <label>Student E-mail</label>
             <input name="email" type="email" placeholder="ex: myname@example.com" value={form.email} onChange={handleChange} />
             <div className="form-hint">example@example.com</div>
-          </div>
-          <div className="form-group">
-            <label>Student ID</label>
-            <input name="studentId" placeholder="Student ID" value={form.studentId} onChange={handleChange} />
           </div>
           <div className="form-group">
             <label>List of Classes</label>
