@@ -21,20 +21,6 @@ const scrollToSection = (id) => {
   }
 };
 
-const LearnArrow = () => (
-  <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="arrow-svg learn-arrow">
-    <path d="M10 30 Q60 10 110 30" stroke="#7c3aed" strokeWidth="4" fill="none" />
-    <polygon points="110,30 120,32 112,24" fill="#7c3aed" />
-  </svg>
-);
-
-const PlayArrow = () => (
-  <svg width="120" height="36" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="arrow-svg play-arrow">
-    <path d="M10 30 Q60 10 110 30" stroke="#22c55e" strokeWidth="4" fill="none" />
-    <polygon points="110,30 120,32 112,24" fill="#22c55e" />
-  </svg>
-);
-
 const LandingPage = () => {
   const [activeLink, setActiveLink] = useState("home");
   const navigate = useNavigate();
@@ -77,19 +63,26 @@ const LandingPage = () => {
           <img src="/creativity.png" alt="Creativity" className="hero-img hero-img-left" />
           <div className="hero-center">
             <h1 className="landing-title">
-              The best place to
-              <br />
-              <span className="learn-arrow-wrap">
-                <span className="learn">learn</span>
-                <LearnArrow />
+              The best place to<br />
+              <span className="fancy-row">
+                <span className="learn-arrow-wrap">
+                  <span className="learn">learn</span>
+                  <svg className="arrow-svg learn-arrow" width="110" height="36" viewBox="0 0 110 36" fill="none">
+                    <path d="M10 30 Q55 10 100 30" stroke="#a259e6" strokeWidth="4" fill="none"/>
+                    <polygon points="100,30 110,32 102,24" fill="#a259e6"/>
+                  </svg>
+                </span>
+                <span className="and-text"> and </span>
+                <span className="play-arrow-wrap">
+                  <span className="play">play</span>
+                  <svg className="arrow-svg play-arrow" width="110" height="36" viewBox="0 0 110 36" fill="none">
+                    <path d="M10 30 Q55 10 100 30" stroke="#22c55e" strokeWidth="4" fill="none"/>
+                    <polygon points="100,30 110,32 102,24" fill="#22c55e"/>
+                  </svg>
+                </span>
               </span>
-              {" and "}
-              <span className="play-arrow-wrap">
-                <span className="play">play</span>
-                <PlayArrow />
-              </span>
               <br />
-              for Kids
+              <span className="for-kids">for Kids</span>
             </h1>
             <div className="landing-badges-row">
               <img src={avatar2} alt="avatar2" className="lego-avatar" />
