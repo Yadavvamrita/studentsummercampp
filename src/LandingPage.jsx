@@ -83,10 +83,9 @@ const LandingPage = () => {
 
       {/* Main Content */}
       <main className="landing-main">
-        <img src="/creativity.png" alt="Creativity" className="creative-img-left" />
-        <img src="/concept.png" alt="Concept" className="concept-img-right" />
-
         <div className="landing-content" id="home">
+          <img src="/creativity.png" alt="Creativity" className="creative-img-left" />
+
           <div className="heading-wrapper">
             <h1 className="landing-title">
               <span className="main-line">The best place to</span>
@@ -118,6 +117,8 @@ const LandingPage = () => {
             </div>
           </div>
 
+          <img src="/concept.png" alt="Concept" className="concept-img-right" />
+
           {/* Description */}
           <div className="landing-desc">
             Fun, learning, and adventures await your child at our Summer Camp 2025.
@@ -127,10 +128,6 @@ const LandingPage = () => {
           <button onClick={handleRegisterClick} className="cta-btn">
             Click to Start
           </button>
-          {/* 
-          Alternatively, you could use a Link:
-          <Link to="/register" className="cta-btn">Click to Start</Link> 
-          */}
         </div>
 
         {/* Placeholder sections for scrolling */}
