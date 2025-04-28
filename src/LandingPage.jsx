@@ -12,9 +12,14 @@ const navLinks = [
   { label: "Features", id: "features" },
   { label: "About us", id: "about" },
   { label: "Contact us", id: "contact" },
+  { label: "Form", id: "form", isRoute: true },
 ];
 
-const scrollToSection = (id) => {
+const scrollToSection = (id, navigate) => {
+  if (id === "form") {
+    navigate("/form");
+    return;
+  }
   const el = document.getElementById(id);
   if (el) {
     el.scrollIntoView({ behavior: "smooth" });
@@ -41,13 +46,18 @@ const LandingPage = () => {
           {navLinks.map((link) => (
             <li key={link.id}>
               <a
-                href={`#${link.id}`}
+                href={link.isRoute ? "/form" : `#${link.id}`}
                 onClick={(e) => {
-                  const el = document.getElementById(link.id);
-                  if (el) {
+                  if (link.isRoute) {
                     e.preventDefault();
-                    scrollToSection(link.id);
-                    setActiveLink(link.id);
+                    navigate("/form");
+                  } else {
+                    const el = document.getElementById(link.id);
+                    if (el) {
+                      e.preventDefault();
+                      scrollToSection(link.id, navigate);
+                      setActiveLink(link.id);
+                    }
                   }
                 }}
                 className={activeLink === link.id ? "active" : ""}
