@@ -2,8 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import LoginPage from './LoginPage';
-import RegisterPage from './RegisterPage';
-import './App.css';
+import RegisterPage from './RegisterPage'; // <-- Make sure this is imported
 
 function App() {
   return (
@@ -11,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/register" element={<RegisterPage />} /> {/* <-- Add this */}
       </Routes>
     </Router>
   );
