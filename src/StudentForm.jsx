@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 
 const classList = [
@@ -19,6 +20,7 @@ const StudentForm = () => {
     className: ""
   });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,8 +33,12 @@ const StudentForm = () => {
       return;
     }
     setError("");
-    alert(`Student Details:\nName: ${form.firstName} ${form.lastName}\nGender: ${form.gender}\nEmail: ${form.email}\nClass: ${form.className}`);
-    setForm({ firstName: "", lastName: "", gender: "", email: "", className: "" });
+    // Store in localStorage
+    const students = JSON.parse(localStorage.getItem("students") || "[]");
+    students.push(form);
+    localStorage.setItem("students", JSON.stringify(students));
+    // Redirect to landing page
+    navigate("/");
   };
 
   return (

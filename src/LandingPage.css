@@ -220,7 +220,7 @@
 .form-bg {
   min-height: 100vh;
   width: 100vw;
-  background: linear-gradient(180deg, #ffb347 0%, #ffcc80 100%);
+  background: linear-gradient(90deg, #7c3aed 0%, #22c55e 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -230,8 +230,8 @@
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-  padding: 3.2rem 3rem 2.5rem 3rem;
-  max-width: 600px;
+  padding: 3.2rem 4.5rem 2.5rem 4.5rem;
+  max-width: 850px;
   width: 100%;
   margin: 2rem 0;
   display: flex;
@@ -257,7 +257,7 @@
 .student-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem 2rem;
+  gap: 2rem 2.5rem;
   width: 100%;
 }
 
@@ -329,7 +329,7 @@
   background: #16a34a;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .form-card {
     padding: 1.2rem 0.5rem;
     max-width: 98vw;
