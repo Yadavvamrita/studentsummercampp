@@ -64,24 +64,7 @@ const LandingPage = () => {
           <div className="hero-center">
             <h1 className="landing-title">
               The best place to<br />
-              <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: '1.2rem', marginTop: '0.2em', marginBottom: '0.1em' }}>
-                <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-                  <span className="learn" style={{ color: "#7c3aed", fontStyle: "italic", fontWeight: 700 }}>learn</span>
-                  <svg className="arrow-svg learn-arrow" width="90" height="32" viewBox="0 0 90 32" fill="none">
-                    <path d="M5 25 Q45 5 85 25" stroke="#a259e6" strokeWidth="4" fill="none"/>
-                    <polygon points="75,23 89,28 80,17" fill="#a259e6"/>
-                  </svg>
-                </span>
-                <span style={{ fontSize: '2.2rem', fontWeight: 700, color: '#222', fontStyle: 'normal', margin: '0 0.2em', lineHeight: '1.1', alignSelf: 'flex-end' }}>and</span>
-                <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-                  <span className="play" style={{ color: "#22c55e", fontStyle: "italic", fontWeight: 700 }}>play</span>
-                  <svg className="arrow-svg play-arrow" width="90" height="32" viewBox="0 0 90 32" fill="none">
-                    <path d="M5 25 Q45 5 85 25" stroke="#22c55e" strokeWidth="4" fill="none"/>
-                    <polygon points="75,23 89,28 80,17" fill="#22c55e"/>
-                  </svg>
-                </span>
-              </span>
-              <br />
+              <span className="learn" style={{ color: "#7c3aed", fontStyle: "italic", fontWeight: 700 }}>learn</span> and <span className="play" style={{ color: "#22c55e", fontStyle: "italic", fontWeight: 700 }}>play</span><br />
               for Kids
             </h1>
             <div className="landing-badges-row">
