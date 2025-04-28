@@ -556,20 +556,20 @@ html, body {
     margin-top: 8.5rem;
   }
 
-  .heading-wrapper {
-    order: 2;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    margin-bottom: 0.5rem;
-  }
   .creative-img-left {
-    order: 3;
+    order: 2;
     display: block;
     position: static !important;
     margin: 0 auto 0.5rem auto;
     max-width: 80vw;
     width: 100%;
+  }
+  .heading-wrapper {
+    order: 3;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin-bottom: 0.5rem;
   }
   .landing-badges-row {
     order: 4;
