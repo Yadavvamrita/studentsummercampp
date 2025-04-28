@@ -520,3 +520,44 @@
     height: 120px;
   }
 }
+
+/* Multi-image carousel for Camp Memories */
+.carousel-wrapper.multi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+.carousel-image.multi {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+.carousel-image.multi:hover {
+  transform: scale(1.04);
+}
+@media (max-width: 900px) {
+  .carousel-image.multi {
+    width: 22vw;
+    min-width: 80px;
+    height: 80px;
+  }
+  .carousel-wrapper.multi {
+    gap: 8px;
+  }
+}
+@media (max-width: 600px) {
+  .carousel-image.multi {
+    width: 98vw;
+    max-width: 98vw;
+    height: 80px;
+  }
+  .carousel-wrapper.multi {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

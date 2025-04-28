@@ -30,15 +30,27 @@ const carouselImages = [
   "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
   "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
   "https://images.unsplash.com/photo-1472653431158-6364773b2a56?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
 ];
 
 const LandingPage = () => {
   const [activeLink, setActiveLink] = useState("home");
   const navigate = useNavigate();
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const visibleCount = 4;
 
   const handleRegisterClick = () => {
     navigate("/register");
+  };
+
+  const getVisibleImages = () => {
+    const images = [];
+    for (let i = 0; i < visibleCount; i++) {
+      images.push(carouselImages[(carouselIndex + i) % carouselImages.length]);
+    }
+    return images;
   };
 
   return (
@@ -102,7 +114,7 @@ const LandingPage = () => {
         {/* Image Carousel Section */}
         <section className="carousel-section">
           <h2 className="carousel-title">Camp Memories</h2>
-          <div className="carousel-wrapper">
+          <div className="carousel-wrapper multi">
             <button
               className="carousel-arrow left"
               onClick={() => setCarouselIndex((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1))}
@@ -110,14 +122,17 @@ const LandingPage = () => {
             >
               &#8592;
             </button>
-            <img
-              src={carouselImages[carouselIndex]}
-              alt={`Camp memory ${carouselIndex + 1}`}
-              className="carousel-image"
-            />
+            {getVisibleImages().map((img, idx) => (
+              <img
+                key={idx}
+                src={img}
+                alt={`Camp memory ${((carouselIndex + idx) % carouselImages.length) + 1}`}
+                className="carousel-image multi"
+              />
+            ))}
             <button
               className="carousel-arrow right"
-              onClick={() => setCarouselIndex((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1))}
+              onClick={() => setCarouselIndex((prev) => (prev + 1) % carouselImages.length)}
               aria-label="Next image"
             >
               &#8594;
