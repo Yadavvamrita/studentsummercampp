@@ -22,11 +22,13 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 3rem 0.2rem 3rem;
-  position: relative;
-  gap: 2rem;
+  padding: 1.5rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
 }
 
 .nav-logo {
@@ -85,6 +87,19 @@ html, body {
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+  }
 }
 
 /* Register Button */
@@ -129,288 +144,6 @@ html, body {
   padding-bottom: 2.5rem;
 }
 
-/* Graphics */
-.landing-graphics-left,
-.landing-graphics-right {
-  flex: 0 0 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0 1rem;
-}
-
-.landing-graphics-right {
-  align-items: flex-end;
-  justify-content: center;
-  position: relative;
-}
-
-.landing-graphics-right-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 10vh;
-}
-
-.squiggle {
-  width: 40px;
-  height: 40px;
-  margin: 10px 0;
-}
-
-.squiggle-1 {
-  border-left: 4px solid #a21caf;
-  border-radius: 20px;
-}
-
-.squiggle-2 {
-  border-left: 4px solid #22c55e;
-  border-radius: 20px;
-}
-
-.squiggle-3 {
-  border-right: 4px solid #22c55e;
-  border-radius: 20px;
-  height: 80px;
-  margin-top: 40px;
-}
-
-/* Landing Content */
-.landing-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-  min-width: 350px;
-  justify-content: center;
-  margin-bottom: 2.5rem;
-}
-
-/* Heading */
-.heading-wrapper {
-  width: 1090px;
-  height: 498px;
-  max-width: 100vw;
-  max-height: 60vw;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.landing-title {
-  font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
-  font-size: 4.6rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.3rem;
-  color: #222;
-  line-height: 1.01;
-  letter-spacing: 0.01em;
-  position: relative;
-}
-
-.landing-title .main-line,
-.landing-title .second-line,
-.landing-title .third-line {
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-
-.landing-title .second-line {
-  font-size: 3.6rem;
-}
-
-.landing-title .third-line {
-  font-size: 3.2rem;
-  margin-top: 0.5em;
-}
-
-/* Learn / Play Text */
-.learn, .play {
-  font-family: 'Pacifico', 'Comic Sans MS', cursive, sans-serif;
-  font-size: 3.2rem;
-  font-weight: 700;
-  font-style: italic;
-  margin: 0 0.3rem;
-  letter-spacing: 0.01em;
-  position: relative;
-  z-index: 2;
-}
-
-.learn {
-  color: #8f3fff;
-}
-
-.play {
-  color: #19c23d;
-}
-
-/* Badges */
-.landing-badges-row {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  margin-bottom: 0.5rem;
-  margin-top: -2.5rem;
-}
-
-.badge-img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid #7c3aed;
-  background: #f3e8ff;
-}
-
-.badge-customers {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 1rem;
-  color: #222;
-  background: #fff;
-  border-radius: 16px;
-  padding: 0.2rem 0.7rem;
-  box-shadow: 0 2px 8px #a21caf11;
-  font-weight: 500;
-}
-
-/* Description */
-.landing-desc {
-  color: #666;
-  font-size: 1.1rem;
-  margin-top: 0.2rem;
-  margin-bottom: 1.2rem;
-  text-align: center;
-}
-
-/* Call To Action Button (Upgraded!) */
-.cta-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, #7c3aed, #22c55e);
-  color: #fff;
-  padding: 0.9rem 2.5rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 30px;
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  margin-top: 1rem;
-}
-
-.cta-btn:hover {
-  background: linear-gradient(135deg, #22c55e, #7c3aed);
-  transform: scale(1.05);
-  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.4);
-}
-
-/* Avatars */
-.avatar-group {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1.2rem;
-  margin: 0.2rem 0 0.7rem 0;
-}
-
-.lego-avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 2px 8px #0001;
-  object-fit: cover;
-}
-
-/* Icons */
-.medal-icon {
-  width: 38px;
-  height: 38px;
-  margin-top: 0.5rem;
-}
-
-/* Decorative Lines */
-.vertical-squiggles {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin-left: 1.2rem;
-  margin-top: 0.5rem;
-}
-
-.mini-squiggle {
-  width: 4px;
-  height: 32px;
-  border-radius: 8px;
-}
-
-.mini-squiggle-1 {
-  background: #a21caf;
-}
-
-.mini-squiggle-2 {
-  background: #22c55e;
-}
-
-/* Extra Decorations */
-.left-brain-img,
-.creative-img-left,
-.concept-img-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.95;
-}
-
-.left-brain-img {
-  left: 1.5rem;
-  width: 90px;
-}
-
-.creative-img-left {
-  left: 10vw;
-  width: 260px;
-  max-width: 30vw;
-}
-
-.concept-img-right {
-  right: 10vw;
-  width: 300px;
-  max-width: 35vw;
-}
-
-/* Learn & Play Arrows */
-.learn-arrow, .play-arrow {
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -18px;
-  width: 100%;
-  height: 36px;
-  margin: 0 auto;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.learn-wrap, .play-wrap {
-  display: inline-block;
-  position: relative;
-  vertical-align: bottom;
-}
-
 /* Responsive Design */
 @media (max-width: 1200px) {
   .landing-container {
@@ -444,66 +177,11 @@ html, body {
   }
 }
 
-@media (max-width: 992px) {
-  .landing-container {
-    padding: 0;
-  }
-  
-  .landing-nav {
-    padding: 1.5rem 2rem;
-  }
-  
-  .landing-title {
-    font-size: 3.2rem;
-  }
-  .landing-title .second-line {
-    font-size: 2.6rem;
-  }
-  .landing-title .third-line {
-    font-size: 2.2rem;
-  }
-  .learn, .play {
-    font-size: 2.4rem;
-  }
-  .heading-wrapper {
-    width: 750px;
-    height: 350px;
-  }
-  
-  .nav-links {
-    gap: 1.5rem;
-  }
-  .nav-links li a {
-    font-size: 1.1rem;
-    padding: 0.2rem 1rem;
-  }
-  
-  .landing-main {
-    flex-direction: column;
-    padding: 1.5rem;
-  }
-  
-  .landing-graphics-left,
-  .landing-graphics-right {
-    display: none;
-  }
-}
-
 @media (max-width: 768px) {
-  .landing-container {
-    height: auto;
-  }
-
   .landing-nav {
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0.5rem;
-    gap: 0.5rem;
+    padding: 1rem;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    width: 100%;
   }
 
   .nav-logo {
@@ -515,11 +193,19 @@ html, body {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    width: 100%;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
   }
 
   .nav-links li a {
     font-size: 1rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.8rem;
+    width: 100%;
+    display: block;
   }
 
   .nav-links li a:hover,
@@ -533,10 +219,6 @@ html, body {
   .nav-links li a.active {
     background: #7c3aed;
     color: white;
-  }
-
-  .nav-links li a::after {
-    display: none;
   }
 
   .nav-register-btn {
@@ -560,55 +242,6 @@ html, body {
     padding: 1rem 0.5rem 0 0.5rem;
     gap: 1.2rem;
     margin-top: 8.5rem;
-  }
-
-  .creative-img-left {
-    order: 2;
-    display: block;
-    position: static !important;
-    margin: 0 auto 0.5rem auto;
-    max-width: 80vw;
-    width: 100%;
-  }
-  .heading-wrapper {
-    order: 3;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    margin-bottom: 0.5rem;
-  }
-  .landing-badges-row {
-    order: 4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0.5rem 0 0.5rem 0;
-    width: 100%;
-  }
-  .concept-img-right {
-    order: 5;
-    display: block;
-    position: static !important;
-    margin: 0.5rem auto 0.5rem auto;
-    max-width: 80vw;
-    width: 100%;
-  }
-  .landing-desc {
-    order: 6;
-    color: #666;
-    font-size: 1.1rem;
-    margin: 0.5rem 0 1.2rem 0;
-    text-align: center;
-  }
-  .cta-btn {
-    order: 7;
-    width: 100%;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
   }
 }
 
@@ -661,57 +294,5 @@ html, body {
   .cta-btn {
     padding: 0.8rem;
     font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .landing-nav {
-    padding: 0.6rem;
-  }
-  
-  .nav-logo {
-    font-size: 1.2rem;
-  }
-  
-  .nav-links {
-    gap: 0.8rem;
-  }
-  
-  .nav-links li a {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.5rem;
-  }
-  
-  .nav-register-btn {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
-  
-  .landing-main {
-    margin-top: 6rem;
-  }
-  
-  .landing-title {
-    font-size: 1.5rem;
-  }
-  
-  .landing-title .main-line,
-  .landing-title .second-line,
-  .landing-title .third-line {
-    font-size: 1.5rem;
-  }
-  
-  .learn, .play {
-    font-size: 1.5rem;
-  }
-  
-  .lego-avatar {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .cta-btn {
-    padding: 0.7rem;
-    font-size: 1rem;
   }
 }
