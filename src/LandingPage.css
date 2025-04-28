@@ -3,12 +3,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem;
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 .nav-logo {
@@ -23,14 +20,11 @@
 .nav-logo .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #7c3aed;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
+  gap: 1rem;
 }
 
 .nav-links li {
@@ -48,40 +42,26 @@
 }
 
 .nav-links a:hover {
-  background-color: #f3f0ff;
-  color: #7c3aed;
-  transform: translateY(-2px);
+  background-color: #7c3aed;
+  color: white;
 }
 
 .nav-links a.active {
   background-color: #7c3aed;
   color: white;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
 }
 
 @media screen and (max-width: 768px) {
-  .landing-nav {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
-  }
-
   .nav-links {
     flex-direction: column;
     align-items: center;
-    width: 100%;
     gap: 0.5rem;
   }
 
   .nav-links a {
-    width: 100%;
-    text-align: center;
-    padding: 0.8rem 1.5rem;
-  }
-
-  .nav-links a:hover {
-    transform: none;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
   }
 }
 
@@ -89,24 +69,18 @@
 .landing-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .landing-main {
-  flex: 1;
   padding: 2rem;
 }
 
 .landing-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 1rem;
 }
 
 .landing-desc {
   font-size: 1.2rem;
-  color: #666;
   margin: 1.5rem 0;
-  line-height: 1.6;
 }
