@@ -578,10 +578,6 @@ html, body {
 }
 
 @media (max-width: 576px) {
-  .landing-container {
-    height: auto;
-  }
-  
   .landing-nav {
     padding: 0.6rem 0.8rem;
   }
@@ -621,10 +617,6 @@ html, body {
 }
 
 @media (max-width: 400px) {
-  .landing-container {
-    height: auto;
-  }
-  
   .landing-nav {
     padding: 0.5rem;
   }
