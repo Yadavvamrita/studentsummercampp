@@ -66,23 +66,22 @@ html, body {
   color: #222;
   font-weight: 600;
   font-size: 1.2rem;
-  padding: 0.2rem 1.2rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 8px;
-  transition: color 0.2s, background 0.2s, letter-spacing 0.2s;
+  transition: all 0.3s ease;
   font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
 }
 
-.nav-links li a.active,
-.nav-links li a:focus,
 .nav-links li a:hover {
-  background: #f3f0ff !important;
-  color: #7c3aed !important;
-  border-bottom: 2px solid #7c3aed !important;
-  font-weight: 700 !important;
-  transform: translateY(-4px) scale(1.05) !important;
-  box-shadow: 0 4px 16px #a78bfa22 !important;
-  letter-spacing: 0.5px;
-  transition: all 0.18s cubic-bezier(.4,2,.6,1);
+  background-color: #7c3aed;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.nav-links li a.active {
+  background-color: #7c3aed;
+  color: white;
+  font-weight: bold;
 }
 
 /* Register Button */
@@ -510,29 +509,26 @@ html, body {
   }
 
   .nav-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1.2rem;
-    width: 100%;
-    padding: 0.5rem 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .nav-links li a {
-    font-size: 1rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
   }
 
-  .nav-links li a:hover,
-  .nav-links li a.active {
-    transform: translateY(0);
-    background: #f3f0ff;
-    color: #7c3aed;
-  }
-
-  .nav-links li a.active {
-    background: #7c3aed;
+  .nav-links li a:hover {
+    background-color: #7c3aed;
     color: white;
+    transform: translateY(-2px);
+  }
+
+  .nav-links li a.active {
+    background-color: #7c3aed;
+    color: white;
+    font-weight: bold;
   }
 
   .nav-links li a::after {
