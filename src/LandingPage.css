@@ -91,63 +91,62 @@
 }
 
 .landing-title {
+  font-family: 'Fredoka', 'Poppins', Arial, sans-serif;
   font-size: 4rem;
   font-weight: 800;
   color: #222;
-  margin-bottom: 0.5rem;
   text-align: center;
-  font-family: 'Fredoka', sans-serif;
-  line-height: 1.1;
+  line-height: 1.08;
+  margin-bottom: 0.5rem;
 }
 
 .fancy-row {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 0.5rem;
+  gap: 1.2rem;
   margin-top: 0.2em;
   margin-bottom: 0.1em;
 }
 
-.learn-arrow-wrap, .play-arrow-wrap {
+.arrowed-word {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
 }
 
-.learn {
-  color: #7c3aed;
+.learn, .play {
+  font-size: 2.5rem;
   font-style: italic;
   font-weight: 700;
-  font-size: 2.5rem;
-  position: relative;
-  z-index: 1;
+  line-height: 1;
+  font-family: inherit;
+}
+
+.learn {
+  color: #a259e6;
 }
 
 .play {
   color: #22c55e;
-  font-style: italic;
-  font-weight: 700;
-  font-size: 2.5rem;
-  position: relative;
-  z-index: 1;
 }
 
 .arrow-svg {
   margin-top: -0.2em;
-  width: 110px;
-  height: 36px;
+  width: 90px;
+  height: 32px;
   display: block;
 }
 
 .and-text {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: #222;
   font-style: normal;
   margin: 0 0.2em;
   line-height: 1.1;
+  align-self: flex-end;
 }
 
 .for-kids {
