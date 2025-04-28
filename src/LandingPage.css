@@ -91,13 +91,13 @@
 }
 
 .landing-title {
-  font-family: 'Fredoka', 'Poppins', Arial, sans-serif;
-  font-size: 4.2rem;
+  font-size: 4rem;
   font-weight: 800;
   color: #222;
-  text-align: center;
-  line-height: 1.05;
   margin-bottom: 0.5rem;
+  text-align: center;
+  font-family: 'Fredoka', sans-serif;
+  line-height: 1.1;
 }
 
 .fancy-row {
@@ -116,19 +116,22 @@
   position: relative;
 }
 
-.learn, .play {
-  font-size: 2.5rem;
+.learn {
+  color: #7c3aed;
   font-style: italic;
   font-weight: 700;
-  line-height: 1;
-}
-
-.learn {
-  color: #a259e6;
+  font-size: 2.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .play {
   color: #22c55e;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .arrow-svg {

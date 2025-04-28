@@ -64,25 +64,8 @@ const LandingPage = () => {
           <div className="hero-center">
             <h1 className="landing-title">
               The best place to<br />
-              <span className="fancy-row">
-                <span className="learn-arrow-wrap">
-                  <span className="learn">learn</span>
-                  <svg className="arrow-svg learn-arrow" width="110" height="36" viewBox="0 0 110 36" fill="none">
-                    <path d="M10 30 Q55 10 100 30" stroke="#a259e6" strokeWidth="4" fill="none"/>
-                    <polygon points="100,30 110,32 102,24" fill="#a259e6"/>
-                  </svg>
-                </span>
-                <span className="and-text"> and </span>
-                <span className="play-arrow-wrap">
-                  <span className="play">play</span>
-                  <svg className="arrow-svg play-arrow" width="110" height="36" viewBox="0 0 110 36" fill="none">
-                    <path d="M10 30 Q55 10 100 30" stroke="#22c55e" strokeWidth="4" fill="none"/>
-                    <polygon points="100,30 110,32 102,24" fill="#22c55e"/>
-                  </svg>
-                </span>
-              </span>
-              <br />
-              <span className="for-kids">for Kids</span>
+              <span className="learn" style={{ color: "#7c3aed", fontStyle: "italic", fontWeight: 700 }}>learn</span> and <span className="play" style={{ color: "#22c55e", fontStyle: "italic", fontWeight: 700 }}>play</span><br />
+              for Kids
             </h1>
             <div className="landing-badges-row">
               <img src={avatar2} alt="avatar2" className="lego-avatar" />
