@@ -76,10 +76,10 @@ html, body {
 }
 
 .nav-links li a:hover {
-  background: #f3f0ff;
-  color: #7c3aed;
+  background: #7c3aed;
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
 }
 
 .nav-links li a.active {
