@@ -90,11 +90,18 @@ html, body {
   width: 100%;
 }
 
-.nav-links li a:hover,
-.nav-links li a.active {
-  color: #7c3aed;
+.nav-links li a:hover {
   background: #f3f0ff;
+  color: #7c3aed;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+}
+
+.nav-links li a.active {
+  background: #7c3aed;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
 }
 
 /* Register Button */
@@ -540,6 +547,12 @@ html, body {
     transform: translateY(0);
     background: #f3f0ff;
     color: #7c3aed;
+    box-shadow: none;
+  }
+
+  .nav-links li a.active {
+    background: #7c3aed;
+    color: white;
   }
 
   .nav-links li a::after {
