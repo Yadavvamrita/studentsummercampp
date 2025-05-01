@@ -135,7 +135,9 @@ const LandingPage = () => {
       {/* Program Structure & Tracks */}
       <section className="py-16 bg-gray-50 mt-40">
         <div className="container-custom">
-          <h2 className="section-title bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-lg animate-fade-in-up">🛠️ Program Structure & Tracks</h2>
+          <h2 className="section-title bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-lg animate-fade-in-up">
+            <span role="img" aria-label="tools">🛠️</span> Program Structure & Tracks
+          </h2>
           <p className="text-lg text-center text-gray-600 max-w-3xl mx-auto mb-12 animate-fade-in-up delay-150">
             Over the course of 10 days, students can choose between two learning tracks. Each track includes theoretical sessions, guided hands-on activities, group projects, competitions, and flying/demo sessions.
           </p>
