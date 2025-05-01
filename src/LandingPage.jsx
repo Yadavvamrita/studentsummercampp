@@ -1,484 +1,456 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./LandingPage.css";
-import StudentForm from "./StudentForm";
-
-// Avatar and badge images
-const avatar2 = "https://randomuser.me/api/portraits/lego/2.jpg";
-const avatar3 = "https://randomuser.me/api/portraits/lego/3.jpg";
-const badgeImg = "https://randomuser.me/api/portraits/lego/4.jpg";
-
-const navLinks = [
-  { label: "Home", id: "home" },
-  { label: "Features", id: "features" },
-  { label: "About us", id: "about" },
-  { label: "Contact us", id: "contact" },
-  { label: "Form", id: "form", isRoute: true },
-];
-
-const scrollToSection = (id, navigate) => {
-  if (id === "form") {
-    navigate("/form");
-    return;
-  }
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
-const carouselImages = [
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1472653431158-6364773b2a56?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
-];
+import "./index.css";
 
 const LandingPage = () => {
-  const [activeLink, setActiveLink] = useState("home");
   const navigate = useNavigate();
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  const visibleCount = 4;
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleRegisterClick = () => {
-    navigate("/register");
+    navigate("/login");
   };
 
-  const getVisibleImages = () => {
-    const images = [];
-    for (let i = 0; i < visibleCount; i++) {
-      images.push(carouselImages[(carouselIndex + i) % carouselImages.length]);
-    }
-    return images;
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <div className="landing-container">
+    <div className="min-h-screen bg-white">
       {/* Navigation Bar */}
-      <nav className="landing-nav">
-        <div className="nav-logo">
-          <span role="img" aria-label="sun">🌞</span>
-          <span className="logo-text">Summer Camp</span>
-        </div>
-        <ul className="nav-links">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <a
-                href={link.isRoute ? "/form" : `#${link.id}`}
-                onClick={(e) => {
-                  if (link.isRoute) {
-                    e.preventDefault();
-                    navigate("/form");
-                  } else {
-                    const el = document.getElementById(link.id);
-                    if (el) {
-                      e.preventDefault();
-                      scrollToSection(link.id, navigate);
-                      setActiveLink(link.id);
-                    }
-                  }
-                }}
-                className={activeLink === link.id ? "active" : ""}
+      <nav className="fixed top-0 left-0 w-full h-auto md:h-20 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-b-xl z-50">
+        <div className="container-custom h-full">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center justify-between h-20">
+            <div className="flex-1"></div>
+            <div className="flex items-center gap-3 mx-auto">
+              <span className="text-4xl" role="img" aria-label="sun">🌞</span>
+              <div className="flex items-center gap-2 text-3xl font-black">
+                <span className="bg-gradient-to-r from-indigo-500 to-cyan-500 text-transparent bg-clip-text">Dream Advance</span>
+                <span className="text-gray-900">Summer Camp</span>
+                <span className="text-secondary">2K25</span>
+              </div>
+            </div>
+            <div className="flex-1 flex justify-end">
+              <button onClick={handleRegisterClick} className="btn-primary">Login</button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <div className="flex items-center justify-between h-16 px-4">
+              {/* Mobile Logo */}
+              <div className="flex items-center gap-2">
+                <span className="text-2xl" role="img" aria-label="sun">🌞</span>
+                <div className="flex flex-col">
+                  <span className="text-lg font-black bg-gradient-to-r from-indigo-500 to-cyan-500 text-transparent bg-clip-text">Dream Advance</span>
+                  <div className="flex items-center gap-1">
+                    <span className="text-sm font-bold text-gray-900">Summer Camp</span>
+                    <span className="text-sm font-bold text-secondary">2K25</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={toggleMobileMenu}
+                className="p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
               >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  {isMobileMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
+
+            {/* Mobile Menu */}
+            {isMobileMenuOpen && (
+              <div className="px-4 pt-2 pb-3 space-y-1 bg-gradient-to-r from-yellow-50 to-orange-50 border-t border-gray-200">
+                <button
+                  onClick={handleRegisterClick}
+                  className="w-full text-left block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                >
+                  Login
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
       </nav>
-      <main className="landing-main">
-        <div className="landing-hero-row">
-          <img src="/creativity.png" alt="Creativity" className="hero-img hero-img-left" />
-          <div className="hero-center">
-            <h1 className="landing-title">
-              The best place to<br />
-              <span className="learn" style={{ color: "#7c3aed", fontStyle: "italic", fontWeight: 700 }}>learn</span> and <span className="play" style={{ color: "#22c55e", fontStyle: "italic", fontWeight: 700 }}>play</span><br />
-              for Kids
-            </h1>
-            <div className="landing-badges-row">
-              <img src={avatar2} alt="avatar2" className="lego-avatar" />
-              <img src={avatar3} alt="avatar3" className="lego-avatar" />
-              <div className="badge-customers">
-                <img src={badgeImg} alt="badge" className="badge-img" />
-                <span>2k+<br />meda Customers</span>
+
+      {/* IIITD logo */}
+      <div className="container-custom pt-24 pb-8">
+        <img src="/name.jpg" alt="IIIT Delhi Logo" className="max-w-[320px] mx-auto rounded-xl shadow-sm" />
+      </div>
+
+      {/* Hero Section */}
+      <div className="container-custom">
+        <div className="grid lg:grid-cols-3 gap-8 items-center">
+          <div className="lg:col-span-1">
+            <div className="text-center lg:text-left">
+              <div className="font-playfair font-black text-5xl lg:text-6xl text-yellow-500 leading-tight animate-pulse">
+                SUMMER<br />CAMP<br />
+                <span className="font-luckiest text-6xl lg:text-7xl">2025</span>
               </div>
             </div>
-            <div className="landing-desc">
-              Fun, learning, and adventures await your child at our Summer Camp 2025.
-            </div>
-            <button className="cta-btn" onClick={handleRegisterClick}>Click to Start</button>
           </div>
-          <img src="/concept.png" alt="Concept" className="hero-img hero-img-right" />
+          
+          <div className="lg:col-span-1">
+            <div className="text-lg md:text-xl font-semibold text-blue-900 space-y-4">
+              <p>Organized by Dream Advance in collaboration with IIIT Delhi Innovation & Incubation Center</p>
+              <p>Venue: IIIT Delhi Campus, New Delhi</p>
+              <p>Dates:</p>
+              <p>Batch 1: 25th May – 5th June 2025</p>
+              <p>Batch 2: 15th June – 25th June 2025</p>
+              <p>Time: 09:00 AM – 12:00 PM</p>
+            </div>
+          </div>
+          
+          <div className="lg:col-span-1">
+            <div className="animate-bounce-slow">
+              <img src="/concept.png" alt="Hero Illustration" className="w-full" />
+            </div>
+          </div>
         </div>
-        {/* Image Carousel Section */}
-        <section className="carousel-section">
-          <h2 className="carousel-title">Camp Memories</h2>
-          <div className="carousel-wrapper multi">
-            <button
-              className="carousel-arrow left"
-              onClick={() => setCarouselIndex((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1))}
-              aria-label="Previous image"
-            >
-              &#8592;
-            </button>
-            {getVisibleImages().map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={`Camp memory ${((carouselIndex + idx) % carouselImages.length) + 1}`}
-                className="carousel-image multi"
-              />
-            ))}
-            <button
-              className="carousel-arrow right"
-              onClick={() => setCarouselIndex((prev) => (prev + 1) % carouselImages.length)}
-              aria-label="Next image"
-            >
-              &#8594;
-            </button>
-          </div>
-          <div className="carousel-dots">
-            {carouselImages.map((_, idx) => (
-              <span
-                key={idx}
-                className={`carousel-dot${carouselIndex === idx ? " active" : ""}`}
-                onClick={() => setCarouselIndex(idx)}
-              >
-                ●
-              </span>
-            ))}
-          </div>
-        </section>
-        {/* Registration Form Section */}
-        <section className="landing-form-section">
-          <StudentForm />
-        </section>
-        {/* Info Showcase Section */}
-        <section className="landing-info-section">
-          <div className="info-content">
-            <div className="info-text">
-              <h2 className="info-title">Summer Camp 2025</h2>
-              <h3 className="info-subtitle">Pathways World School - The Flagship Campus</h3>
-              <div className="info-underline"></div>
-              <p className="info-desc">
-                <b>Pathways Rediscovering Minds</b> is an exciting residential program for children in Grades 3 to 8, designed to go beyond learning and spark personal growth. More than just a camp, it's a chance for kids to explore new interests, build confidence, and develop lifelong skills—all while having a great time!<br />
-                With fun, hands-on modules and a supportive environment, they'll gain independence, make new friends, and rediscover the joy of learning in a whole new way.
-              </p>
-            </div>
-            <div className="info-image-wrap">
-              <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80" alt="Showcase" className="info-image" />
-            </div>
-          </div>
-        </section>
-        {/* Program Details Section */}
-        <section className="program-details-section">
-          <div className="program-details-bg">
-            <h2 className="program-details-title">Program Details</h2>
-            <div className="program-details-content">
-              <div className="program-col">
-                <h3 className="program-col-title">Movers (Grades 3 & 4)</h3>
-                <ul className="program-list">
-                  <li><span className="program-icon">📅</span> Dates: 2 - 7 June 2025 (6 Days)</li>
-                  <li><span className="program-icon">💰</span> Cost: INR 35,000</li>
-                  <li><span className="program-icon">🏠</span> Type: Residential</li>
-                  <li><span className="program-icon">👥</span> Open To: 20 Students</li>
-                </ul>
-              </div>
-              <div className="program-divider"></div>
-              <div className="program-col">
-                <h3 className="program-col-title">Flyers (Grades 5 - 8)</h3>
-                <ul className="program-list">
-                  <li><span className="program-icon">📅</span> Dates: 29 May - 7 June 2025 (10 Days)</li>
-                  <li><span className="program-icon">💰</span> Cost: INR 55,000</li>
-                  <li><span className="program-icon">🏠</span> Type: Residential</li>
-                  <li><span className="program-icon">👥</span> Open To: 40 Students</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* Highlights Of The Camp Section 1 */}
-        <section className="camp-highlight-section">
-          <div className="highlight-content">
-            <div className="highlight-image-wrap">
-              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Creative Expressions" className="highlight-image" />
-            </div>
-            <div className="highlight-text">
-              <h2 className="highlight-title">Highlights Of The Camp</h2>
-              <h3 className="highlight-subtitle">Creative Expressions</h3>
-              <p className="highlight-desc">
-                Unleash your imagination and bring ideas to life! From <b>Art & Craft</b>, <b>Theatre</b>, <b>Dance</b>, and <b>Music</b>, campers explore different forms of self-expression. Whether painting a masterpiece, performing on stage, dancing to the beat, or creating music, this is the perfect space to build confidence, creativity, and teamwork!
-              </p>
-              <button className="highlight-btn">EXPLORE</button>
-            </div>
-          </div>
-        </section>
-        {/* Highlights Of The Camp Section 2 */}
-        <section className="camp-highlight-section alt">
-          <div className="highlight-content">
-            <div className="highlight-text">
-              <h2 className="highlight-title">Innovation & Discovery</h2>
-              <p className="highlight-desc">
-                Think, design, and create! Our <b>Design & Technology</b> sessions introduce campers to coding, design thinking, and hands-on innovation. Whether building prototypes, experimenting with digital creativity, or solving real-world problems, this space fuels curiosity and sparks the imagination of future innovators!
-              </p>
-              <button className="highlight-btn">LEARN MORE</button>
-            </div>
-            <div className="highlight-image-wrap">
-              <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Innovation & Discovery" className="highlight-image" />
-            </div>
-          </div>
-        </section>
-        {/* Highlights Of The Camp Section 3 */}
-        <section className="camp-highlight-section">
-          <div className="highlight-content">
-            <div className="highlight-image-wrap">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Outdoor Adventures & Exploration" className="highlight-image" />
-            </div>
-            <div className="highlight-text">
-              <h2 className="highlight-title">Outdoor Adventures & Exploration</h2>
-              <p className="highlight-desc">
-                Step into nature's classroom on our lush 32-acre campus! Our <b>Nature Exploration</b> sessions encourage campers to connect with the environment, whether at the petting zoo, through tree-planting initiatives, or outdoor learning experiences. It's all about curiosity, adventure, developing a deep love for nature and becoming a true eco-warrior!
-              </p>
-              <button className="highlight-btn">EXPLORE</button>
-            </div>
-          </div>
-        </section>
-        {/* Boarding Experience Section */}
-        <section className="boarding-experience-section">
-          <h2 className="boarding-title">Boarding Experience</h2>
-          <p className="boarding-subtitle">
-            Sharing everything from dinner to laughter with friends makes every moment more special! Living together for two weeks isn't just about fun—it's about building friendships, creating unforgettable memories, and making learning an adventure. This is where everyday moments turn into lifelong bonds!
+      </div>
+
+      {/* Program Structure & Tracks */}
+      <section className="py-16 bg-gray-50 mt-40">
+        <div className="container-custom">
+          <h2 className="section-title bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-lg animate-fade-in-up">🛠️ Program Structure & Tracks</h2>
+          <p className="text-lg text-center text-gray-600 max-w-3xl mx-auto mb-12 animate-fade-in-up delay-150">
+            Over the course of 10 days, students can choose between two learning tracks. Each track includes theoretical sessions, guided hands-on activities, group projects, competitions, and flying/demo sessions.
           </p>
-          <div className="boarding-cards-row">
-            <div className="boarding-card morning">
-              <div className="boarding-card-header">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Morning Activities" className="boarding-card-img" />
-                <span className="boarding-card-title">MORNING ACTIVITIES</span>
-              </div>
-              <div className="boarding-card-desc">
-                Mornings at our summer camp kick off with a burst of energy, offering an array of invigorating activities like:
-                <ul>
-                  <li>Trekking</li>
-                  <li>Cycling</li>
-                  <li>Bird Watching</li>
-                  <li>Yoga</li>
-                  <li>Sports</li>
-                </ul>
-              </div>
-              <button className="boarding-card-btn morning">ENQUIRE NOW</button>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-2xl shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:bg-yellow-50 active:scale-95 cursor-pointer">
+              <h3 className="text-2xl font-bold mb-6">🚀 Track 1: Robotics + IoT + Artificial Intelligence</h3>
+              <ul className="space-y-4 text-gray-600">
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Basics of electronics, sensors, and Arduino
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Introduction to robotics and automation
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Build obstacle-avoiding bots
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Explore AI tools like ChatGPT, Sora, Bard
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Hands-on with Raspberry Pi and IoT integrations
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Build your first AI model
+                </li>
+              </ul>
+              <p className="mt-6 text-blue-600 font-semibold italic">
+                Ideal for students who love gadgets, programming, and automation.
+              </p>
             </div>
-            <div className="boarding-card evening">
-              <div className="boarding-card-header">
-                <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Fun Filled Evenings" className="boarding-card-img" />
-                <span className="boarding-card-title">FUN FILLED EVENINGS</span>
-              </div>
-              <div className="boarding-card-desc">
-                Evenings at our summer camp are a delightful blend of fun and camaraderie, offering a range of enjoyable activities like:
-                <ul>
-                  <li>Campfires</li>
-                  <li>Story Telling</li>
-                  <li>Socializing</li>
-                  <li>Evening Games</li>
-                </ul>
-              </div>
-              <button className="boarding-card-btn evening">ENQUIRE NOW</button>
-            </div>
-            <div className="boarding-card stay">
-              <div className="boarding-card-header">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Stay & Accommodation" className="boarding-card-img" />
-                <span className="boarding-card-title">STAY & ACCOMMODATION</span>
-              </div>
-              <div className="boarding-card-desc">
-                Our campers will enjoy the comfort of twin-sharing spacious bedrooms, each equipped with attached bathrooms to ensure privacy and comfort. Our dedicated residence parents, experienced and caring individuals, are there to support and guide campers, ensuring a safe and nurturing environment throughout their stay.
-              </div>
-              <button className="boarding-card-btn stay">ENQUIRE NOW</button>
-            </div>
-          </div>
-        </section>
-        {/* Testimonials/Stats Section */}
-        <section className="camp-stats-section">
-          <div className="camp-stats-bg">
-            <h2 className="camp-stats-title">What Campers & Parents Say About Last Year</h2>
-            <div className="camp-stats-row">
-              <div className="camp-stat">
-                <div className="camp-stat-icon">☆</div>
-                <div className="camp-stat-heading">An Unforgettable Experience!</div>
-                <div className="camp-stat-value"><b>97%</b> <span>of students rated their overall camp experience as <i>Good or Excellent</i>.</span></div>
-              </div>
-              <div className="camp-stat">
-                <div className="camp-stat-icon">🏢</div>
-                <div className="camp-stat-heading">Comfortable & Welcoming Residences!</div>
-                <div className="camp-stat-value"><b>98%</b> <span>of students found their stay <i>Good or Excellent</i>.</span></div>
-              </div>
-              <div className="camp-stat">
-                <div className="camp-stat-icon">👥</div>
-                <div className="camp-stat-heading">Parents Approve!</div>
-                <div className="camp-stat-value"><b>95%</b> <span>of parents rated the camp as <i>Good or Excellent</i>.</span></div>
-              </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:bg-blue-50 active:scale-95 cursor-pointer">
+              <h3 className="text-2xl font-bold mb-6">✈️ Track 2: Drone Tech + Aero Modelling</h3>
+              <ul className="space-y-4 text-gray-600">
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Learn the science of aerodynamics
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Build your own RC plane and quadcopter
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Drone frame construction, wiring, and calibration
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Flight testing and challenge rounds
+                </li>
+              </ul>
+              <p className="mt-6 text-blue-600 font-semibold italic">
+                Perfect for hands-on learners who dream of flying machines.
+              </p>
             </div>
           </div>
-        </section>
-        {/* Blog/Articles Carousel Section */}
-        <section className="blog-carousel-section">
-          <h2 className="blog-carousel-title">Latest Articles & Tips</h2>
-          <BlogCarousel />
-        </section>
-        {/* Schedule Section */}
-        <section className="schedule-section">
-          <h2 className="schedule-title">Schedule</h2>
-          <div className="schedule-table-wrapper">
-            <table className="schedule-table">
-              <thead>
-                <tr>
-                  <th>Time / Date</th>
-                  <th>Monday</th>
-                  <th>Tuesday</th>
-                  <th>Wednesday</th>
-                  <th>Thursday</th>
-                  <th>Friday</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td rowSpan="2">8 AM-9 AM</td>
-                  <td colSpan="5">Morning Session</td>
-                </tr>
-                <tr>
-                  <td>G1</td><td>Maths</td><td>Physics</td><td>English</td><td>MAT</td><td>Computer science</td>
-                </tr>
-                <tr>
-                  <td>G2</td><td>Computer science</td><td>Maths</td><td>Physics</td><td>English</td><td>MAT</td>
-                </tr>
-                <tr>
-                  <td>G3</td><td>MAT</td><td>Computer science</td><td>Maths</td><td>Physics</td><td>English</td>
-                </tr>
-                <tr>
-                  <td>G4</td><td>English</td><td>MAT</td><td>Computer science</td><td>Maths</td><td>Physics</td>
-                </tr>
-                <tr>
-                  <td>G5</td><td>Physics</td><td>English</td><td>MAT</td><td>Computer science</td><td>Maths</td>
-                </tr>
-                <tr>
-                  <td rowSpan="2">11 AM-12</td>
-                  <td colSpan="5">Lunch</td>
-                </tr>
-                <tr>
-                  <td>G1</td><td>GK</td><td>EMC</td><td>Fun Zone</td><td>Activities</td><td>Robotics</td>
-                </tr>
-                <tr>
-                  <td>G2</td><td>Robotics</td><td>GK</td><td>EMC</td><td>Fun Zone</td><td>Activities</td>
-                </tr>
-                <tr>
-                  <td>G3</td><td>Activities</td><td>Robotics</td><td>GK</td><td>EMC</td><td>Fun Zone</td>
-                </tr>
-                <tr>
-                  <td>G4</td><td>Fun Zone</td><td>Activities</td><td>Robotics</td><td>GK</td><td>EMC</td>
-                </tr>
-                <tr>
-                  <td>G5</td><td>EMC</td><td>Fun Zone</td><td>Activities</td><td>Robotics</td><td>GK</td>
-                </tr>
-              </tbody>
-            </table>
+        </div>
+      </section>
+
+      {/* Who Can Participate */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <h2 className="section-title animate-fade-in-up">🎯 Who Can Participate?</h2>
+          <h3 className="text-xl md:text-2xl text-blue-600 font-bold text-center mb-12 animate-fade-in-up delay-150">
+            Students from Class III to Class X who are:
+          </h3>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-orange-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl active:border-yellow-500 border-2 border-transparent animate-fade-in-up delay-200 cursor-pointer group">
+              <div className="aspect-w-16 aspect-h-9 mb-6 overflow-hidden">
+                <img src="/sec4.jpg" alt="Learning" className="rounded-xl object-cover w-full h-full transition-transform duration-300 group-hover:scale-110 animate-fade-in-up delay-300" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">Curious and eager to learn by doing Experiment</h3>
+              <p className="text-gray-600">
+                Start your day with hands-on exploration and real-world learning. Build, experiment, and solve problems as a team—discover new interests, develop practical skills, and grow in confidence in a fun, energetic environment.
+              </p>
+            </div>
+
+            <div className="bg-blue-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl active:border-blue-400 border-2 border-transparent animate-fade-in-up delay-300 cursor-pointer group">
+              <div className="aspect-w-16 aspect-h-9 mb-6 overflow-hidden">
+                <img src="/sec41.jpg" alt="Technology" className="rounded-xl object-cover w-full h-full transition-transform duration-300 group-hover:scale-110 animate-fade-in-up delay-400" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">Interested in robotics, drones, coding, or design</h3>
+              <p className="text-gray-600">
+                Our sessions light up with creativity! Dive into tech tinkering, digital design labs, and interactive workshops. Collaborate, solve challenges, and bring your ideas to life in a supportive, innovative environment.
+              </p>
+            </div>
+
+            <div className="bg-green-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl active:border-green-400 border-2 border-transparent animate-fade-in-up delay-400 cursor-pointer group">
+              <div className="aspect-w-16 aspect-h-9 mb-6 overflow-hidden">
+                <img src="/sec42.jpg" alt="Innovation" className="rounded-xl object-cover w-full h-full transition-transform duration-300 group-hover:scale-110 animate-fade-in-up delay-500" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">Excited to build, create, explore, and innovate</h3>
+              <p className="text-gray-600">
+                Live in a vibrant, inspiring environment where innovation thrives. Our nurturing space supports young minds eager to invent, explore, and bring their ideas to life.
+              </p>
+            </div>
           </div>
-        </section>
-        {/* Footer Section */}
-        <footer className="camp-footer">
-          <div className="footer-socials">
-            <a href="#" className="footer-icon" aria-label="Instagram"><svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="6" stroke="#f59e42" strokeWidth="2"/><circle cx="12" cy="12" r="5" stroke="#f59e42" strokeWidth="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="#f59e42"/></svg></a>
-            <a href="#" className="footer-icon" aria-label="Facebook"><svg width="28" height="28" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#f59e42" strokeWidth="2"/><path d="M15 8h-2a1 1 0 0 0-1 1v2h3l-.5 2H12v6" stroke="#f59e42" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></a>
-            <a href="#" className="footer-icon" aria-label="YouTube"><svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="4" stroke="#f59e42" strokeWidth="2"/><path d="M10 9.5v5l5-2.5-5-2.5z" fill="#f59e42"/></svg></a>
+        </div>
+      </section>
+
+      {/* Highlights of the Camp */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <h2 className="text-5xl font-extrabold text-center bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-lg mb-12 mx-auto w-fit border-b-4 border-yellow-300 pb-2 animate-fade-in-up">Highlights of the Camp</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up">
+              <img src="/sec51.jpg" alt="IIT/NIT Experts" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white">🧠 Curated by IIT/NIT Experts</h3>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-100">
+              <img src="/sec52.jpg" alt="Mentor Support" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white">👨‍🏫 Mentor Support Throughout</h3>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-200">
+              <img src="/sec53.jpg" alt="Project Kits" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white">📦 Custom Project Kits Provided</h3>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-300">
+              <img src="/sec54.jpg" alt="Study Materials" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white">📚 Printable Study Materials</h3>
+              </div>
+            </div>
+
+            {/* Card 5 */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-400">
+              <img src="/sec56.jpg" alt="Competitions" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white">🏆 Competitions & Presentations</h3>
+              </div>
+            </div>
+
+            {/* Card 6 */}
+            <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-500">
+              <img src="/sec566.jpg" alt="Certificate" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+                <h3 className="text-xl font-bold text-white">🎓 Certificate from CoGrad & IIIT Delhi</h3>
+              </div>
+            </div>
           </div>
-          <div className="footer-links">
-            <a href="#" className="footer-link">Terms & Conditions</a>
-            <span className="footer-divider">|</span>
-            <a href="#" className="footer-link">Privacy Policy</a>
+        </div>
+      </section>
+
+      {/* Registration Links Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-4xl font-extrabold flex items-center gap-3 mb-8 bg-gradient-to-r from-blue-600 to-yellow-500 text-transparent bg-clip-text drop-shadow-lg">
+              <span role="img" aria-label="registration" className="text-4xl animate-bounce">📝</span> 
+              Registration Links
+            </h2>
+
+            <div className="bg-white rounded-2xl shadow-lg p-8 space-y-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              {/* Students Registration */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                  <span role="img" aria-label="pointing" className="text-2xl">👉</span>
+                  Students – Enroll Now
+                </h3>
+                <Link 
+                  to="/student-registration"
+                  className="inline-flex items-center text-lg text-blue-600 hover:text-blue-800 font-semibold transition-all group"
+                >
+                  Click here to fill the Student Registration Form
+                  <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-125" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
           </div>
-          <div className="footer-copy">
-            Copyright © 2025 Summer Camp. All Rights Reserved.<br />
+        </div>
+      </section>
+
+      {/* Camp Fee & Offers */}
+      <section className="relative py-20 bg-gradient-to-br from-blue-900 to-blue-500">
+        <div className="container-custom relative z-10">
+          <h2 className="text-4xl font-playfair font-bold text-white text-center mb-12">Camp Fee & Offers</h2>
+          <div className="max-w-3xl mx-auto text-center text-white space-y-4">
+            <p className="text-2xl font-bold">Standard Fee: <span className="text-yellow-300">₹9999/-</span> (inclusive of kits & materials)</p>
+            <p className="text-2xl font-bold">Early Bird Discount: <span className="text-yellow-300">₹1500 off</span> (Till 15th May 2025)</p>
+            <p className="text-xl mt-8 font-bold">Batch Options:</p>
+            <p className="text-lg">Batch 1: 25 May – 5 June 2025</p>
+            <p className="text-lg">Batch 2: 15 June – 25 June 2025</p>
+            <p className="text-lg italic text-yellow-200 mt-6">Limited seats per batch. First come, first served basis.</p>
           </div>
-        </footer>
-      </main>
+        </div>
+      </section>
+
+      {/* Glimpses from Previous Camps */}
+      <section className="py-16 bg-gradient-to-br from-yellow-50 to-orange-50">
+        <div className="container-custom">
+          <h2 className="text-4xl font-bold text-gray-900 mb-2 text-center">
+            <span className="bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text">Glimpses from Previous Camps</span>
+          </h2>
+          <p className="text-lg text-center text-gray-700 mb-10 font-medium">Explore photos and testimonials from our 100+ schools across India.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <img src="/sec3.jpg" alt="Camp Glimpse 1" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
+            <img src="/G2.jpg" alt="Camp Glimpse 2" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
+            <img src="/G3.jpg" alt="Camp Glimpse 3" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
+            <img src="/G4.jpg" alt="Camp Glimpse 4" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
+            <img src="/G5.jpg" alt="Camp Glimpse 5" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
+            <img src="/G6.jpg" alt="Camp Glimpse 6" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
+          </div>
+        </div>
+      </section>
+
+      {/* Camp Coordinators Section */}
+      <section className="py-16 bg-gradient-to-br from-yellow-50 to-orange-100">
+        <div className="container-custom max-w-2xl mx-auto text-center">
+          <h2 className="text-4xl font-extrabold mb-2 bg-gradient-to-r from-yellow-600 to-orange-500 text-transparent bg-clip-text drop-shadow-lg animate-fade-in-up flex items-center justify-center gap-3">
+            <span className="text-3xl">🎓</span> Camp Coordinators
+          </h2>
+          <p className="text-lg text-gray-700 mb-8 animate-fade-in-up delay-150">For any queries, feel free to reach out to:</p>
+          <div className="bg-white/90 border-2 border-yellow-200 rounded-3xl shadow-2xl p-10 mb-6 mx-auto max-w-xl animate-fade-in-up delay-300 flex flex-col items-center gap-2">
+            <div className="text-2xl font-extrabold text-gray-900 mb-2 flex items-center gap-2">
+              <span className="text-yellow-500">👩‍💼</span> Manvi
+            </div>
+            <div className="text-lg text-gray-800 mb-1 flex items-center gap-2"><span className="text-blue-500">📞</span> Phone: <span className="font-semibold">[Number]</span></div>
+            <div className="text-lg text-gray-800 mb-4 flex items-center gap-2"><span className="text-pink-500">✉️</span> Email: <a href="mailto:[Mail]" className="text-blue-600 hover:underline">[Mail]</a></div>
+            <div className="text-lg text-gray-800 mb-1 flex items-center gap-2"><span className="text-green-600">🏢</span> IIIT Delhi Innovation & Incubation Center</div>
+            <div className="text-lg text-gray-800 mb-1 flex items-center gap-2"><span className="text-pink-500">📍</span> IIIT Delhi Campus, New Delhi</div>
+            <div className="text-lg text-gray-800 flex items-center gap-2"><span className="text-blue-500">🌐</span> <a href="https://www.dream.cograd.in" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">www.dream.cograd.in</a></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Dream Advance Section */}
+      <section className="py-16 bg-gradient-to-br from-yellow-100 to-orange-50">
+        <div className="container-custom max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-orange-600 font-playfair flex items-center justify-center gap-3">
+            <span role="img" aria-label="trophy">🏆</span> Why Choose Dream Advance?
+          </h2>
+          <div className="text-xl text-gray-800 mb-8 font-semibold">Featured on Shark Tank India Season 4</div>
+          <div className="grid md:grid-cols-2 gap-8 text-left">
+            <div className="bg-white rounded-2xl shadow p-6 border-2 border-transparent transition-all duration-300 active:border-yellow-500 cursor-pointer">
+              <div className="text-2xl font-bold text-yellow-600 mb-2">50,000+ students trained | 500+ workshops conducted</div>
+              <div className="text-gray-700">Dream Advance has empowered over 50,000 young minds through hands-on STEM learning, delivering more than 500 engaging workshops nationwide.</div>
+            </div>
+            <div className="bg-white rounded-2xl shadow p-6 border-2 border-transparent transition-all duration-300 active:border-yellow-500 cursor-pointer">
+              <div className="text-2xl font-bold text-yellow-600 mb-2">100+ Schools across 10+ states</div>
+              <div className="text-gray-700">Our programs have reached 100+ schools in over 10 states, making quality tech education accessible to students from diverse backgrounds.</div>
+            </div>
+            <div className="bg-white rounded-2xl shadow p-6 border-2 border-transparent transition-all duration-300 active:border-yellow-500 cursor-pointer">
+              <div className="text-2xl font-bold text-yellow-600 mb-2">Endorsed by educators, innovators, and tech leaders</div>
+              <div className="text-gray-700">Our initiatives are recognized and recommended by leading educators, industry innovators, and technology leaders for their impact and quality.</div>
+            </div>
+            <div className="bg-white rounded-2xl shadow p-6 border-2 border-transparent transition-all duration-300 active:border-yellow-500 cursor-pointer">
+              <div className="text-2xl font-bold text-yellow-600 mb-2">Backed by IIIT Delhi, one of India's top tech institutes</div>
+              <div className="text-gray-700">Dream Advance is proudly supported by IIIT Delhi, ensuring world-class mentorship, resources, and credibility.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Media and Copyright Section */}
+      <section className="py-6 bg-gradient-to-r from-purple-600 via-teal-500 to-green-500">
+        <div className="container-custom">
+          <div className="flex flex-col items-center space-y-4">
+            {/* Social Media Icons */}
+            <div className="flex space-x-6">
+              <a href="#" className="text-white hover:text-orange-300 transition-colors transform hover:scale-110" aria-label="Instagram">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666z" clipRule="evenodd" />
+                </svg>
+              </a>
+              <a href="#" className="text-white hover:text-orange-300 transition-colors transform hover:scale-110" aria-label="Facebook">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                </svg>
+              </a>
+              <a href="#" className="text-white hover:text-orange-300 transition-colors transform hover:scale-110" aria-label="YouTube">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Terms and Privacy Links */}
+            <div className="flex space-x-4 text-sm">
+              <Link to="/terms" className="text-white hover:text-orange-300 transition-colors">Terms & Conditions</Link>
+              <span className="text-white">|</span>
+              <Link to="/privacy" className="text-white hover:text-orange-300 transition-colors">Privacy Policy</Link>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-sm text-white">
+              Copyright © {new Date().getFullYear()} Summer Camp. All Rights Reserved.
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
-
-// BlogCarousel component
-function BlogCarousel() {
-  const articles = [
-    {
-      img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80", // Drawing/Art class
-      date: "18 Apr, 2025",
-      title: "Top Summer Camps in Delhi NCR for Kids – 2025",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80", // Outdoor activity
-      date: "14 Apr, 2025",
-      title: "First Time at Summer Camp? Here's What Parents Should Know",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80", // Kids playing
-      date: "07 Apr, 2025",
-      title: "How to Reduce Screen Time for Kids Without Tantrums",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1472653431158-6364773b2a56?auto=format&fit=crop&w=600&q=80", // Group activity
-      date: "01 Apr, 2025",
-      title: "After-School Programs: Their Benefits & Transformative Power",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80", // Drawing/Art class
-      date: "28 Mar, 2025",
-      title: "The Benefits of Music & Dance Classes for Kids",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80", // Outdoor activity
-      date: "18 Mar, 2025",
-      title: "Best Spring Camps & Workshops for Kids in Delhi NCR – 2025",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80", // Kids playing
-      date: "12 Mar, 2025",
-      title: "Safe & Eco-Friendly Holi Celebrations for Kids",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1472653431158-6364773b2a56?auto=format&fit=crop&w=600&q=80", // Group activity
-      date: "16 Jan, 2025",
-      title: "Complete Guide to Sports Complexes for Kids in Delhi NCR",
-    },
-  ];
-  const visibleCount = 3;
-  const [startIdx, setStartIdx] = React.useState(0);
-  const intervalRef = React.useRef();
-
-  React.useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setStartIdx((prev) => (prev + 1) % articles.length);
-    }, 2500);
-    return () => clearInterval(intervalRef.current);
-  }, [articles.length]);
-
-  const getVisibleArticles = () => {
-    const cards = [];
-    for (let i = 0; i < visibleCount; i++) {
-      cards.push(articles[(startIdx + i) % articles.length]);
-    }
-    return cards;
-  };
-
-  return (
-    <div className="blog-carousel-wrapper">
-      {getVisibleArticles().map((article, idx) => (
-        <div className="blog-card" key={idx}>
-          <img src={article.img} alt={article.title} className="blog-card-img" />
-          <div className="blog-card-date"><span role="img" aria-label="calendar">📅</span> {article.date}</div>
-          <div className="blog-card-title">{article.title}</div>
-          <button className="blog-card-btn">Read More</button>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default LandingPage;

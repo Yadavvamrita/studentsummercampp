@@ -2,9 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import LoginPage from './LoginPage';
-import RegisterPage from './RegisterPage'; // <-- Make sure this is imported
-import StudentForm from './StudentForm';
-import EventsPage from './EventsPage';
+import SignUp from './components/SignUp';
+import StudentRegistrationForm from './components/StudentRegistrationForm';
 
 function App() {
   return (
@@ -12,9 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} /> {/* <-- Add this */}
-        <Route path="/form" element={<StudentForm />} />
-        <Route path="/events" element={<EventsPage />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/student-registration" element={<StudentRegistrationForm />} />
       </Routes>
     </Router>
   );
