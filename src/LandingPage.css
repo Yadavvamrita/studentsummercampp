@@ -2007,4 +2007,100 @@
   background-color: currentColor;
   margin-left: 2px;
   animation: blink 1s step-end infinite;
+}
+
+/* Typewriter animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: .15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+@keyframes bounceTarget {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    transform: translateY(-10px) scale(1.1);
+  }
+  40% {
+    transform: translateY(-20px) scale(1.15);
+  }
+  60% {
+    transform: translateY(-10px) scale(1.1);
+  }
+  80% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-bounce-target {
+  display: inline-block;
+  animation: bounceTarget 1.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes typingHeading {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink-caret-heading {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
+.typewriter-heading {
+  overflow: hidden;
+  /* border-right: .15em solid orange; */
+  white-space: nowrap;
+  display: inline-block;
+  animation: typingHeading 2.5s steps(30, end);
+}
+
+@keyframes typingCoord {
+  from { width: 0 }
+  to { width: 100% }
+}
+.typewriter-coord {
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  color: #111;
+  animation: typingCoord 2.2s steps(30, end);
+}
+
+@keyframes bounceTrophy {
+  0%, 100% { transform: translateY(0) scale(1); }
+  20% { transform: translateY(-10px) scale(1.1); }
+  40% { transform: translateY(-18px) scale(1.15); }
+  60% { transform: translateY(-10px) scale(1.1); }
+  80% { transform: translateY(0) scale(1); }
+}
+.animate-bounce-trophy {
+  display: inline-block;
+  animation: bounceTrophy 1.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+@keyframes typingDream {
+  from { width: 0 }
+  to { width: 100% }
+}
+.typewriter-dream {
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  color: #ea580c;
+  animation: typingDream 2.2s steps(30, end);
 } 

@@ -1,60 +1,98 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RegistrationLinks from "./components/RegistrationLinks";
 import "./LandingPage.css";
 import "./index.css";
 
 const LandingPage = () => {
+  // Hero section background transition state
+  const [heroBgIndex, setHeroBgIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroBgIndex((prev) => (prev === 0 ? 1 : 0));
+    }, 4000); // 4 seconds per image
+    return () => clearInterval(interval);
+  }, []);
+  const heroBgImages = [
+    "/per1.jpg",
+    "/per2.jpg"
+  ];
+
+  // Modal state for highlights images
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImg, setModalImg] = useState("");
+  const openModal = (img) => {
+    setModalImg(img);
+    setModalOpen(true);
+  };
+  const closeModal = () => setModalOpen(false);
+
   return (
     <div className="min-h-screen bg-white">
-      {/* IIITD logo */}
-      <div className="container-custom pt-8 pb-8">
-        <img src="/name.jpg" alt="IIIT Delhi Logo" className="max-w-[320px] mx-auto rounded-xl shadow-sm" />
-      </div>
-
-      {/* Hero Section */}
-      <div className="container-custom">
-        <div className="grid lg:grid-cols-3 gap-8 items-center">
-          <div className="lg:col-span-1">
-            <div className="text-center lg:text-left">
-              <div className="font-playfair font-black text-5xl lg:text-6xl text-yellow-500 leading-tight animate-pulse">
-                SUMMER<br />CAMP<br />
-                <span className="font-luckiest text-6xl lg:text-7xl">2025</span>
+      {/* Hero Section - clean, beautiful alignment */}
+      <section className="relative min-h-screen" style={{ minHeight: '100vh' }}>
+        {/* Animated hero section background - covers logo and hero grid */}
+        <div
+          className="absolute inset-0 w-full h-full z-0 transition-opacity duration-1000 bg-cover bg-center hero-highlight-bg"
+          style={{
+            backgroundImage: `url(${heroBgImages[heroBgIndex]})`,
+            opacity: 0.85,
+            filter: 'brightness(0.7)',
+            transition: 'background-image 1.5s cubic-bezier(0.4,0,0.2,1), opacity 1.5s',
+          }}
+        ></div>
+        <div className="container-custom relative z-10">
+          {/* IIITD logo at the top center, 3cm below navbar, with highlighted border */}
+          <div className="w-full flex justify-center font-bold mt-[1.5cm] sm:mt-[2.6cm]" style={{ marginBottom: '16px' }}>
+            <div className="bg-white rounded-2xl shadow p-1 sm:p-2 flex items-center justify-center font-bold" style={{ maxWidth: 380 }}>
+              <img src="/name.jpg" alt="IIIT Delhi Logo" className="w-full h-auto object-contain font-bold" style={{ maxWidth: 300 }} />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12 items-center min-h-[420px] lg:min-h-[420px] min-h-screen">
+            {/* Left: SUMMER CAMP 2025 with pulse animation */}
+            <div className="flex items-center justify-center mb-4 lg:mb-0">
+              <div className="text-center lg:text-left animate-hero-pulse mt-0 lg:mt-[-1cm]">
+                <div className="font-playfair font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-yellow-500 leading-tight" style={{ lineHeight: 1.05, fontWeight: 900 }}>
+                  SUMMER<br />CAMP<br />
+                  <span className="font-luckiest text-5xl sm:text-6xl md:text-7xl lg:text-8xl">2025</span>
+                </div>
               </div>
             </div>
-          </div>
-          
-          <div className="lg:col-span-1">
-            <div className="text-lg md:text-xl font-semibold text-blue-900 space-y-4">
-              <p>Organized by Dream Advance in collaboration with IIIT Delhi Innovation & Incubation Center</p>
-              <p>Venue: IIIT Delhi Campus, New Delhi</p>
-              <p>Dates:</p>
-              <p>Batch 1: 25th May – 5th June 2025</p>
-              <p>Batch 2: 15th June – 25th June 2025</p>
-              <p>Time: 09:00 AM – 12:00 PM</p>
+            {/* Center: Event details in a background box with fir.jpg */}
+            <div className="flex flex-col items-center justify-center my-4 lg:my-0">
+              <div className="relative rounded-2xl shadow-xl overflow-hidden flex items-center justify-center px-2 sm:px-4 md:px-6 py-4 sm:py-6 w-full bg-black bg-opacity-60" style={{ minWidth: 0, maxWidth: 600 }}>
+                <div className="relative z-10 text-white text-base sm:text-lg md:text-xl lg:text-2xl font-bold space-y-2 sm:space-y-3 text-left" style={{ textShadow: '0 2px 8px #000' }}>
+                  <p>Organized by Dream Advance in collaboration with IIIT Delhi Innovation & Incubation Center</p>
+                  <p>Venue: IIIT Delhi Campus, New Delhi</p>
+                  <p>Dates:</p>
+                  <p>Batch 1: 25th May – 5th June 2025</p>
+                  <p>Batch 2: 15th June – 25th June 2025</p>
+                  <p>Time: 09:00 AM – 12:00 PM</p>
+                </div>
+              </div>
             </div>
-          </div>
-          
-          <div className="lg:col-span-1">
-            <div className="animate-bounce-slow">
-              <img src="/concept.png" alt="Hero Illustration" className="w-full" />
+            {/* Right: Illustration with float animation */}
+            <div className="flex items-center justify-center animate-float-slow mt-4 lg:mt-0">
+              <img src="/concept.png" alt="Hero Illustration" className="w-3/4 sm:w-2/3 md:w-3/4 lg:w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto" />
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Program Structure & Tracks */}
-      <section className="py-16 bg-gray-50 mt-40">
+      <section className="py-10 sm:py-14 md:py-16 bg-gray-50 mt-8 sm:mt-10 md:mt-12">
         <div className="container-custom">
-          <h2 className="section-title bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-lg animate-fade-in-up">
-            <span role="img" aria-label="tools">🛠️</span> Program Structure & Tracks
-          </h2>
-          <p className="text-lg text-center text-gray-600 max-w-3xl mx-auto mb-12 animate-fade-in-up delay-150">
+          <div className="flex justify-center sm:justify-center md:justify-center lg:justify-center">
+            <h2 className="section-title drop-shadow-lg ml-0 sm:ml-8 md:ml-16 lg:ml-20 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-500 text-transparent bg-clip-text">
+              <span role="img" aria-label="tools">🛠️</span> Program Structure & Tracks
+            </h2>
+          </div>
+          <p className="text-base sm:text-lg text-center text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 animate-fade-in-up delay-150">
             Over the course of 10 days, students can choose between two learning tracks. Each track includes theoretical sessions, guided hands-on activities, group projects, competitions, and flying/demo sessions.
           </p>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:bg-yellow-50 active:scale-95 cursor-pointer">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:bg-yellow-50 active:scale-95 cursor-pointer">
               <h3 className="text-2xl font-bold mb-6">🚀 Track 1: Robotics + IoT + Artificial Intelligence</h3>
               <ul className="space-y-4 text-gray-600">
                 <li className="flex items-start gap-2">
@@ -87,7 +125,7 @@ const LandingPage = () => {
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:bg-blue-50 active:scale-95 cursor-pointer">
+            <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:bg-blue-50 active:scale-95 cursor-pointer">
               <h3 className="text-2xl font-bold mb-6">✈️ Track 2: Drone Tech + Aero Modelling</h3>
               <ul className="space-y-4 text-gray-600">
                 <li className="flex items-start gap-2">
@@ -106,9 +144,17 @@ const LandingPage = () => {
                   <span className="text-blue-500">•</span>
                   Flight testing and challenge rounds
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Introduction to drone programming and automation
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-500">•</span>
+                  Explore real-world drone applications
+                </li>
               </ul>
               <p className="mt-6 text-blue-600 font-semibold italic">
-                Perfect for hands-on learners who dream of flying machines.
+                Perfect for hands-on learners who dream of flying machines and technology.
               </p>
             </div>
           </div>
@@ -118,40 +164,46 @@ const LandingPage = () => {
       {/* Who Can Participate */}
       <section className="py-16 bg-white">
         <div className="container-custom">
-          <h2 className="section-title animate-fade-in-up">🎯 Who Can Participate?</h2>
+          <h2 className="section-title animate-fade-in-up">
+            <span className="bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 text-transparent bg-clip-text font-extrabold typewriter-heading">Who Can Participate?</span>
+          </h2>
           <h3 className="text-xl md:text-2xl text-blue-600 font-bold text-center mb-12 animate-fade-in-up delay-150">
-            Students from Class III to Class X who are:
+            Students from Class IV to Class XII who are:
           </h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-orange-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl active:border-yellow-500 border-2 border-transparent animate-fade-in-up delay-200 cursor-pointer group">
-              <div className="aspect-w-16 aspect-h-9 mb-6 overflow-hidden">
-                <img src="/sec4.jpg" alt="Learning" className="rounded-xl object-cover w-full h-full transition-transform duration-300 group-hover:scale-110 animate-fade-in-up delay-300" />
+            <div className="bg-orange-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-transparent hover:border-orange-400 transition-colors active:border-yellow-500 animate-fade-in-up delay-200 cursor-pointer group h-full flex flex-col">
+              <div className="flex-1 flex items-center justify-center mb-6 overflow-hidden w-full">
+                <img src="/sec4.jpg" alt="Learning" className="rounded-xl object-cover w-full h-56 md:h-64 transition-transform duration-300 group-hover:scale-110 animate-fade-in-up delay-300" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Curious and eager to learn by doing Experiment</h3>
-              <p className="text-gray-600">
-                Start your day with hands-on exploration and real-world learning. Build, experiment, and solve problems as a team—discover new interests, develop practical skills, and grow in confidence in a fun, energetic environment.
-              </p>
+              <div className="flex-1 flex flex-col">
+                <h3 className="text-xl font-bold mb-4">Curious and eager to learn by doing Experiment</h3>
+                <p className="text-gray-600">
+                  Start your day with hands-on exploration and real-world learning. Build, experiment, and solve problems as a team—discover new interests, develop practical skills, and grow in confidence in a fun, energetic environment.
+                </p>
+              </div>
             </div>
-
-            <div className="bg-blue-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl active:border-blue-400 border-2 border-transparent animate-fade-in-up delay-300 cursor-pointer group">
-              <div className="aspect-w-16 aspect-h-9 mb-6 overflow-hidden">
-                <img src="/sec41.jpg" alt="Technology" className="rounded-xl object-cover w-full h-full transition-transform duration-300 group-hover:scale-110 animate-fade-in-up delay-400" />
+            <div className="bg-blue-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-transparent hover:border-blue-400 transition-colors active:border-blue-400 animate-fade-in-up delay-300 cursor-pointer group h-full flex flex-col">
+              <div className="flex-1 flex items-center justify-center mb-6 overflow-hidden w-full">
+                <img src="/sec41.jpg" alt="Technology" className="rounded-xl object-cover w-full h-56 md:h-64 transition-transform duration-300 group-hover:scale-110 animate-fade-in-up delay-400" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Interested in robotics, drones, coding, or design</h3>
-              <p className="text-gray-600">
-                Our sessions light up with creativity! Dive into tech tinkering, digital design labs, and interactive workshops. Collaborate, solve challenges, and bring your ideas to life in a supportive, innovative environment.
-              </p>
+              <div className="flex-1 flex flex-col">
+                <h3 className="text-xl font-bold mb-4">Interested in robotics, drones, coding, or design</h3>
+                <p className="text-gray-600">
+                  Our sessions light up with creativity! Dive into tech tinkering, digital design labs, and interactive workshops. Collaborate, solve challenges, and bring your ideas to life in a supportive, innovative environment.
+                </p>
+              </div>
             </div>
-
-            <div className="bg-green-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl active:border-green-400 border-2 border-transparent animate-fade-in-up delay-400 cursor-pointer group">
-              <div className="aspect-w-16 aspect-h-9 mb-6 overflow-hidden">
-                <img src="/sec42.jpg" alt="Innovation" className="rounded-xl object-cover w-full h-full transition-transform duration-300 group-hover:scale-110 animate-fade-in-up delay-500" />
+            <div className="bg-green-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-transparent hover:border-green-400 transition-colors active:border-green-400 animate-fade-in-up delay-400 cursor-pointer group h-full flex flex-col">
+              <div className="flex-1 flex items-center justify-center mb-6 overflow-hidden w-full">
+                <img src="/sec42.jpg" alt="Innovation" className="rounded-xl object-cover w-full h-56 md:h-64 transition-transform duration-300 group-hover:scale-110 animate-fade-in-up delay-500" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Excited to build, create, explore, and innovate</h3>
-              <p className="text-gray-600">
-                Live in a vibrant, inspiring environment where innovation thrives. Our nurturing space supports young minds eager to invent, explore, and bring their ideas to life.
-              </p>
+              <div className="flex-1 flex flex-col">
+                <h3 className="text-xl font-bold mb-4">Excited to build, create, explore, and innovate</h3>
+                <p className="text-gray-600">
+                  Live in a vibrant, inspiring environment where innovation thrives. Our nurturing space supports young minds eager to invent, explore, and bring their ideas to life.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -160,11 +212,13 @@ const LandingPage = () => {
       {/* Highlights of the Camp */}
       <section className="py-16 bg-white">
         <div className="container-custom">
-          <h2 className="text-5xl font-extrabold text-center bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text drop-shadow-lg mb-12 mx-auto w-fit border-b-4 border-yellow-300 pb-2 animate-fade-in-up">Highlights of the Camp</h2>
+          <h2 className="text-5xl font-extrabold text-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text drop-shadow-lg mb-12 mx-auto w-fit border-b-4 border-yellow-300 pb-2 animate-fade-in-up transition-all duration-700">
+            Highlights of the Camp
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Card 1 */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up">
-              <img src="/sec51.jpg" alt="IIT/NIT Experts" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <img src="/sec51.jpg" alt="IIT/NIT Experts" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer" onClick={() => openModal('/sec51.jpg')} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
                 <h3 className="text-xl font-bold text-white">🧠 Curated by IIT/NIT Experts</h3>
               </div>
@@ -172,7 +226,7 @@ const LandingPage = () => {
 
             {/* Card 2 */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-100">
-              <img src="/sec52.jpg" alt="Mentor Support" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <img src="/sec52.jpg" alt="Mentor Support" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer" onClick={() => openModal('/sec52.jpg')} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
                 <h3 className="text-xl font-bold text-white">👨‍🏫 Mentor Support Throughout</h3>
               </div>
@@ -180,7 +234,7 @@ const LandingPage = () => {
 
             {/* Card 3 */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-200">
-              <img src="/sec53.jpg" alt="Project Kits" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <img src="/sec53.jpg" alt="Project Kits" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer" onClick={() => openModal('/sec53.jpg')} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
                 <h3 className="text-xl font-bold text-white">📦 Custom Project Kits Provided</h3>
               </div>
@@ -188,7 +242,7 @@ const LandingPage = () => {
 
             {/* Card 4 */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-300">
-              <img src="/sec54.jpg" alt="Study Materials" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <img src="/sec54.jpg" alt="Study Materials" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer" onClick={() => openModal('/sec54.jpg')} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
                 <h3 className="text-xl font-bold text-white">📚 Printable Study Materials</h3>
               </div>
@@ -196,7 +250,7 @@ const LandingPage = () => {
 
             {/* Card 5 */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-400">
-              <img src="/sec56.jpg" alt="Competitions" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <img src="/sec56.jpg" alt="Competitions" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer" onClick={() => openModal('/sec56.jpg')} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
                 <h3 className="text-xl font-bold text-white">🏆 Competitions & Presentations</h3>
               </div>
@@ -204,12 +258,22 @@ const LandingPage = () => {
 
             {/* Card 6 */}
             <div className="group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl animate-fade-in-up delay-500">
-              <img src="/sec566.jpg" alt="Certificate" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110" />
+              <img src="/sec566.jpg" alt="Certificate" className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer" onClick={() => openModal('/sec566.jpg')} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
                 <h3 className="text-xl font-bold text-white">🎓 Certificate from CoGrad & IIIT Delhi</h3>
               </div>
             </div>
           </div>
+
+          {/* Modal for image popup */}
+          {modalOpen && (
+            <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50" onClick={closeModal}>
+              <div className="relative max-w-3xl w-full mx-4" onClick={e => e.stopPropagation()}>
+                <button className="absolute top-2 right-2 text-white text-3xl font-bold z-10" onClick={closeModal}>&times;</button>
+                <img src={modalImg} alt="Highlight Large" className="w-full max-h-[80vh] rounded-2xl shadow-2xl object-contain transition-all duration-500" />
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -219,10 +283,14 @@ const LandingPage = () => {
       {/* Camp Fee & Offers */}
       <section className="relative py-20 bg-gradient-to-br from-blue-900 to-blue-500">
         <div className="container-custom relative z-10">
-          <h2 className="text-4xl font-playfair font-bold text-white text-center mb-12">Camp Fee & Offers</h2>
+          <h2 className="text-4xl font-playfair font-bold text-center mb-12 bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text drop-shadow-lg transition-all duration-700">Camp Fee & Offers</h2>
           <div className="max-w-3xl mx-auto text-center text-white space-y-4">
-            <p className="text-2xl font-bold">Standard Fee: <span className="text-yellow-300">₹9999/-</span> (inclusive of kits & materials)</p>
-            <p className="text-2xl font-bold">Early Bird Discount: <span className="text-yellow-300">₹1500 off</span> (Till 15th May 2025)</p>
+            <p className="text-2xl font-bold">
+              Standard Fee: <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text transition-all duration-700">₹9590/-</span> (inclusive of kits & materials)
+            </p>
+            <p className="text-2xl font-bold">
+              Early Bird Discount: <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text transition-all duration-700">₹1000 off</span> (Till 15th May 2025)
+            </p>
             <p className="text-xl mt-8 font-bold">Batch Options:</p>
             <p className="text-lg">Batch 1: 25 May – 5 June 2025</p>
             <p className="text-lg">Batch 2: 15 June – 25 June 2025</p>
@@ -232,28 +300,28 @@ const LandingPage = () => {
       </section>
 
       {/* Glimpses from Previous Camps */}
-      <section className="py-16 bg-gradient-to-br from-yellow-50 to-orange-50">
+      <section className="py-16 bg-blue-50">
         <div className="container-custom">
           <h2 className="text-4xl font-bold text-gray-900 mb-2 text-center">
             <span className="bg-gradient-to-r from-yellow-500 to-orange-500 text-transparent bg-clip-text">Glimpses from Previous Camps</span>
           </h2>
           <p className="text-lg text-center text-gray-700 mb-10 font-medium">Explore photos and testimonials from our 100+ schools across India.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <img src="/sec3.jpg" alt="Camp Glimpse 1" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
-            <img src="/G2.jpg" alt="Camp Glimpse 2" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
-            <img src="/G3.jpg" alt="Camp Glimpse 3" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
-            <img src="/G4.jpg" alt="Camp Glimpse 4" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
-            <img src="/G5.jpg" alt="Camp Glimpse 5" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
-            <img src="/G6.jpg" alt="Camp Glimpse 6" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-300" />
+            <img src="/sec3.jpg" alt="Camp Glimpse 1" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] transition-transform duration-300 hover:scale-105 hover:shadow-2xl" />
+            <img src="/G2.jpg" alt="Camp Glimpse 2" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] transition-transform duration-300 hover:scale-105 hover:shadow-2xl" />
+            <img src="/G3.jpg" alt="Camp Glimpse 3" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] transition-transform duration-300 hover:scale-105 hover:shadow-2xl" />
+            <img src="/G4.jpg" alt="Camp Glimpse 4" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] transition-transform duration-300 hover:scale-105 hover:shadow-2xl" />
+            <img src="/G5.jpg" alt="Camp Glimpse 5" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] transition-transform duration-300 hover:scale-105 hover:shadow-2xl" />
+            <img src="/G6.jpg" alt="Camp Glimpse 6" className="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] transition-transform duration-300 hover:scale-105 hover:shadow-2xl" />
           </div>
         </div>
       </section>
 
       {/* Camp Coordinators Section */}
-      <section className="py-16 bg-gradient-to-br from-yellow-50 to-orange-100">
+      <section className="py-16 bg-gray-100">
         <div className="container-custom max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold mb-2 bg-gradient-to-r from-yellow-600 to-orange-500 text-transparent bg-clip-text drop-shadow-lg animate-fade-in-up flex items-center justify-center gap-3">
-            <span className="text-3xl">🎓</span> Camp Coordinators
+          <h2 className="text-4xl font-extrabold mb-2 drop-shadow-lg animate-fade-in-up flex items-center justify-center gap-3">
+            <span className="text-3xl">🎓</span> <span className="typewriter-coord">Camp Coordinators</span>
           </h2>
           <p className="text-lg text-gray-700 mb-8 animate-fade-in-up delay-150">For any queries, feel free to reach out to:</p>
           <div className="bg-white/90 border-2 border-yellow-200 rounded-3xl shadow-2xl p-10 mb-6 mx-auto max-w-xl animate-fade-in-up delay-300 flex flex-col items-center gap-2">
@@ -270,10 +338,10 @@ const LandingPage = () => {
       </section>
 
       {/* Why Choose Dream Advance Section */}
-      <section className="py-16 bg-gradient-to-br from-yellow-100 to-orange-50">
+      <section className="py-16 bg-blue-50">
         <div className="container-custom max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-orange-600 font-playfair flex items-center justify-center gap-3">
-            <span role="img" aria-label="trophy">🏆</span> Why Choose Dream Advance?
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-playfair flex items-center justify-center gap-3">
+            <span className="typewriter-dream">Why Choose Dream Advance?</span>
           </h2>
           <div className="text-xl text-gray-800 mb-8 font-semibold">Featured on Shark Tank India Season 4</div>
           <div className="grid md:grid-cols-2 gap-8 text-left">
