@@ -5,25 +5,29 @@ import StudentRegistration from './components/StudentRegistration';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import RegistrationSuccess from './components/RegistrationSuccess';
-import Footer from './components/Footer';
+import HostCamp from './components/HostCamp';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
+        <Navbar />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/register" element={<StudentRegistration />} />
+            <Route path="/host-camp" element={<HostCamp />} />
             <Route path="/registration-success" element={<RegistrationSuccess />} />
+            <Route path="/program-structure" element={<LandingPage />} />
+            <Route path="/camp-fee" element={<LandingPage />} />
           </Routes>
         </main>
-        <Footer />
       </div>
     </Router>
   );
 }
 
-export default App; 
+export default App;

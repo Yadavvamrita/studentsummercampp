@@ -1,103 +1,14 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import RegistrationLinks from "./components/RegistrationLinks";
 import "./LandingPage.css";
 import "./index.css";
 
 const LandingPage = () => {
-  const navigate = useNavigate();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const handleRegisterClick = () => {
-    navigate("/login");
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 w-full h-auto md:h-20 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-b-xl z-50">
-        <div className="container-custom h-full">
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center justify-between h-20">
-            <div className="flex-1"></div>
-            <div className="flex items-center gap-3 mx-auto">
-              <span className="text-4xl" role="img" aria-label="sun">🌞</span>
-              <div className="flex items-center gap-2 text-3xl font-black">
-                <span className="bg-gradient-to-r from-indigo-500 to-cyan-500 text-transparent bg-clip-text">Dream Advance</span>
-                <span className="text-gray-900">Summer Camp</span>
-                <span className="text-secondary">2K25</span>
-              </div>
-            </div>
-            <div className="flex-1 flex justify-end">
-              <button onClick={handleRegisterClick} className="btn-primary">Login</button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <div className="flex items-center justify-between h-16 px-4">
-              {/* Mobile Logo */}
-              <div className="flex items-center gap-2">
-                <span className="text-2xl" role="img" aria-label="sun">🌞</span>
-                <div className="flex flex-col">
-                  <span className="text-lg font-black bg-gradient-to-r from-indigo-500 to-cyan-500 text-transparent bg-clip-text">Dream Advance</span>
-                  <div className="flex items-center gap-1">
-                    <span className="text-sm font-bold text-gray-900">Summer Camp</span>
-                    <span className="text-sm font-bold text-secondary">2K25</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={toggleMobileMenu}
-                className="p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  {isMobileMenuOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  )}
-                </svg>
-              </button>
-            </div>
-
-            {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-              <div className="px-4 pt-2 pb-3 space-y-1 bg-gradient-to-r from-yellow-50 to-orange-50 border-t border-gray-200">
-                <button
-                  onClick={handleRegisterClick}
-                  className="w-full text-left block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md"
-                >
-                  Login
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      </nav>
-
       {/* IIITD logo */}
-      <div className="container-custom pt-24 pb-8">
+      <div className="container-custom pt-8 pb-8">
         <img src="/name.jpg" alt="IIIT Delhi Logo" className="max-w-[320px] mx-auto rounded-xl shadow-sm" />
       </div>
 
@@ -303,35 +214,7 @@ const LandingPage = () => {
       </section>
 
       {/* Registration Links Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl font-extrabold flex items-center gap-3 mb-8 bg-gradient-to-r from-blue-600 to-yellow-500 text-transparent bg-clip-text drop-shadow-lg">
-              <span role="img" aria-label="registration" className="text-4xl animate-bounce">📝</span> 
-              Registration Links
-            </h2>
-
-            <div className="bg-white rounded-2xl shadow-lg p-8 space-y-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-              {/* Students Registration */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                  <span role="img" aria-label="pointing" className="text-2xl">👉</span>
-                  Students – Enroll Now
-                </h3>
-                <Link 
-                  to="/student-registration"
-                  className="inline-flex items-center text-lg text-blue-600 hover:text-blue-800 font-semibold transition-all group"
-                >
-                  Click here to fill the Student Registration Form
-                  <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-125" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <RegistrationLinks />
 
       {/* Camp Fee & Offers */}
       <section className="relative py-20 bg-gradient-to-br from-blue-900 to-blue-500">

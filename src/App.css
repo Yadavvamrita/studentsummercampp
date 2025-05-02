@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.background-box {
+  background-color: #f0f8ff; /* Light blue background */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  max-width: 600px; /* Optional: Limit the width */
+  margin: 20px auto; /* Center the box */
+  font-family: Arial, sans-serif; /* Optional: Set font */
+  color: #003366; /* Dark blue text color */
+  line-height: 1.6; /* Improve readability */
+}
