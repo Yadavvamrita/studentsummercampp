@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const HostCamp = () => {
   const navigate = useNavigate();
@@ -34,15 +36,20 @@ const HostCamp = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    navigate('/registration-success');
+    try {
+      await addDoc(collection(db, "hostCampRequests"), formData);
+      navigate('/registration-success');
+    } catch (error) {
+      // handle error (show message, etc.)
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="w-screen min-h-screen flex items-center justify-center overflow-hidden relative" style={{ background: `url('/kids-sunset.jpg') center/cover no-repeat` }}>
+      <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-0"></div>
+      <div className="max-w-4xl mx-auto relative z-10 w-full">
         <div className="bg-white shadow-xl rounded-lg p-8">
           {/* Header */}
           <div className="text-center mb-8">

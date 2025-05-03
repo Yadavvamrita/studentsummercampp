@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const StudentRegistration = () => {
   const navigate = useNavigate();
@@ -92,16 +94,9 @@ const StudentRegistration = () => {
 
     if (validateForm()) {
       try {
-        // Here you would typically send the data to your backend
-        console.log('Form submitted:', formData);
-        
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Redirect to success page
+        await addDoc(collection(db, "studentRegistrations"), formData);
         navigate('/registration-success');
       } catch (error) {
-        console.error('Submission error:', error);
         setErrors(prev => ({
           ...prev,
           submit: 'Failed to submit form. Please try again.'
@@ -118,10 +113,10 @@ const StudentRegistration = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center overflow-hidden relative" style={{ background: `url('/sec41.jpg') center/cover no-repeat` }}>
+    <div className="w-screen min-h-screen flex items-center justify-center overflow-y-auto relative" style={{ background: `url('/sec41.jpg') center/cover no-repeat` }}>
       <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-0"></div>
-      <div className="relative z-10 w-full max-w-lg">
-        <div className="bg-white rounded-2xl shadow-xl p-8 w-full flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-2xl">
+        <div className="bg-white rounded-2xl shadow-xl p-4 w-full flex flex-col items-center">
           <div className="text-center mb-2">
             <h2 className="text-4xl font-extrabold text-gray-900 mb-1">Registration Form</h2>
             <p className="text-lg text-gray-500 mb-6">Fill out the form carefully for registration</p>
@@ -131,7 +126,7 @@ const StudentRegistration = () => {
               <p className="text-red-600">{errors.submit}</p>
             </div>
           )}
-          <form onSubmit={handleSubmit} className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+          <form onSubmit={handleSubmit} className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5 pb-24">
             {/* Full Name */}
             <div>
               <label htmlFor="fullName" className="block text-base font-semibold text-gray-700 mb-1">Full Name</label>
@@ -196,8 +191,8 @@ const StudentRegistration = () => {
               {renderError('courseOption')}
             </div>
             {/* Submit Button */}
-            <div className="md:col-span-2 flex justify-center mt-4">
-              <button type="submit" disabled={isSubmitting} className="w-40 bg-green-500 hover:bg-green-600 text-white text-lg font-bold py-2 rounded-lg shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400">
+            <div className="md:col-span-2 flex justify-center mt-4 md:static fixed bottom-0 left-0 w-full bg-white bg-opacity-95 p-2 md:p-0 z-20 md:z-auto border-t md:border-0">
+              <button type="submit" disabled={isSubmitting} className="w-full md:w-40 bg-green-500 hover:bg-green-600 text-white text-lg font-bold py-3 md:py-2 rounded-lg shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-400">
                 {isSubmitting ? 'Submitting...' : 'Submit'}
               </button>
             </div>
