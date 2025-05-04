@@ -49,14 +49,14 @@ const LandingPage = () => {
           {/* Top Center: Logos */}
           <div style={{ flex: '1 1 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <img 
-              src="/dasc.png" 
+              src="/Dascc.png" 
               alt="Dream Advance" 
               style={{ 
-                height: 106.4, // Reduced from 133 to 106.4 (0.8 times the current size)
+                height: 195.51, // Current height
                 width: 'auto', 
                 marginRight: 18, 
                 marginLeft: '1cm', 
-                marginTop: '2.1cm' // Moved downward by 3 cm (previously -0.9cm)
+                marginTop: '-1.3cm' // Moved 1 cm upward (previously -0.3cm)
               }} 
             />
           </div>
