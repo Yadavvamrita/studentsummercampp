@@ -48,7 +48,17 @@ const LandingPage = () => {
           </div>
           {/* Top Center: Logos */}
           <div style={{ flex: '1 1 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src="/dascc.png" alt="Dream Advance" style={{ height: 190, width: 'auto', marginRight: 18, marginLeft: '1cm', marginTop: '-0.9cm' }} />
+            <img 
+              src="/dasc.png" 
+              alt="Dream Advance" 
+              style={{ 
+                height: 106.4, // Reduced from 133 to 106.4 (0.8 times the current size)
+                width: 'auto', 
+                marginRight: 18, 
+                marginLeft: '1cm', 
+                marginTop: '2.1cm' // Moved downward by 3 cm (previously -0.9cm)
+              }} 
+            />
           </div>
           {/* Top Right: Registration Buttons */}
           <div style={{ flex: '0 0 auto', display: 'flex', flexDirection: 'row', gap: 8 }}>
