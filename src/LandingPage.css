@@ -2103,4 +2103,59 @@
   display: inline-block;
   color: #ea580c;
   animation: typingDream 2.2s steps(30, end);
+}
+
+/* Responsive fixes for first section */
+.first-section-main-row,
+.first-section-hero-row {
+  flex-wrap: wrap;
+}
+
+.first-section-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .first-section-main-row,
+  .first-section-hero-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.2rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100vw !important;
+  }
+  .first-section-heading,
+  .first-section-logos,
+  .first-section-registration {
+    width: 100vw !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0.5rem 0 !important;
+  }
+  .first-section-hero-row > div {
+    width: 100vw !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+  .first-section-img {
+    max-width: 90vw !important;
+    height: auto !important;
+    margin: 0.2rem auto !important;
+    display: block !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .first-section-heading span {
+    font-size: 1.1rem !important;
+  }
+  .first-section-img {
+    max-width: 98vw !important;
+  }
 } 

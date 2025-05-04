@@ -21,58 +21,50 @@ const LandingPage = () => {
         className="first-section-responsive"
         style={{
           width: '100vw',
-          height: 'auto',
+          height: '100vh',
           background: '#fff',
           boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
           margin: 0,
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'flex-start',
           padding: 0,
-          paddingBottom: '-10cm',
         }}
       >
-        <div
-          className="first-section-main-row"
-          style={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingLeft: 32,
-            paddingRight: 32,
-          }}
-        >
-          {/* sc20252.png - left, moved 2cm right and up by 1cm */}
-          <img src="/sc20252.png" alt="Summer Camp 2025" style={{ height: 200, width: 'auto', flexShrink: 0, marginLeft: '2cm', marginTop: '-1cm' }} />
-
-          {/* Center: Logo group, reduced size and moved right */}
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 32, marginLeft: '2cm' }}>
-            <img src="/Dasc.png" alt="Dream Advance" style={{ height: 90, width: 'auto', flexShrink: 0, marginLeft: '1cm', marginTop: '-1cm' }} />
+        {/* Top Row */}
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%', padding: '24px 32px 0 32px' }}>
+          {/* Top Left: Title */}
+          <div style={{ flex: '0 0 320px', textAlign: 'left', marginTop: 0, marginLeft: '1cm' }}>
+            <span style={{
+              fontFamily: 'Montserrat, Poppins, Arial, sans-serif',
+              fontWeight: 600,
+              color: '#2563eb',
+              fontSize: '2.1rem',
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+              lineHeight: 1.0,
+              whiteSpace: 'nowrap'
+            }}>SUMMER CAMP 2025</span>
           </div>
-
-          {/* Registration Buttons - right */}
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: '2cm', marginTop: '-1cm' }}>
-            <a href="/register" style={{ background: 'none', height: 48, display: 'flex', alignItems: 'center', padding: '0 32px', fontWeight: 600, fontSize: '1.1rem', color: '#111', textDecoration: 'none', boxShadow: '0 1px 4px rgba(51,153,255,0.07)', border: 'none', borderRadius: 0, whiteSpace: 'nowrap', outline: 'none' }}>Student Registration</a>
-            <a href="/host-camp" style={{ background: 'none', height: 48, display: 'flex', alignItems: 'center', padding: '0 32px', fontWeight: 600, fontSize: '1.1rem', color: '#111', textDecoration: 'none', boxShadow: '0 1px 4px rgba(76,175,80,0.07)', border: 'none', borderRadius: 0, whiteSpace: 'nowrap' }}>School/Society Registration</a>
+          {/* Top Center: Logos */}
+          <div style={{ flex: '1 1 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src="/dascc.png" alt="Dream Advance" style={{ height: 190, width: 'auto', marginRight: 18, marginLeft: '1cm', marginTop: '-0.9cm' }} />
+          </div>
+          {/* Top Right: Registration Buttons */}
+          <div style={{ flex: '0 0 auto', display: 'flex', flexDirection: 'row', gap: 8 }}>
+            <a href="/register" style={{ background: '#f5fffa', fontWeight: 700, fontSize: '1.1rem', color: '#111', textDecoration: 'none', padding: '8px 18px', borderRadius: 4, boxShadow: '0 1px 4px rgba(51,153,255,0.07)' }}>Student Registration</a>
+            <a href="/host-camp" style={{ background: '#f5fffa', fontWeight: 700, fontSize: '1.1rem', color: '#111', textDecoration: 'none', padding: '8px 18px', borderRadius: 4, boxShadow: '0 1px 4px rgba(76,175,80,0.07)' }}>School/Society Registration</a>
           </div>
         </div>
-      </section>
-
-      {/* Custom Hero Section as per user image and description */}
-      <section style={{ minHeight: '100vh', background: '#fff', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-        {/* Middle Row: Logos and Name */}
-        <div style={{ width: '100%', maxWidth: 1200, margin: '0 auto', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 48 }}>
-          {/* Center: sc3logoc.png */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <img src="/sc3logoc.png" alt="SC3 Logo" style={{ height: 420, width: 'auto', marginBottom: 8, marginTop: '-3cm', marginLeft: '2cm' }} />
+        {/* Center Row: Main Images */}
+        <div style={{ display: 'flex', flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%', gap: 32 }}>
+          {/* Center Left: Summer Camp Logo */}
+          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+            <img src="/sc3logoc.png" alt="Summer Camp 2025" style={{ height: 306, width: 'auto', marginLeft: '7.5cm', marginTop: '-2cm', animation: 'floatLogo 2.5s ease-in-out infinite alternate' }} />
           </div>
-          {/* Right of Center: mainlogo.png */}
-          <div style={{ display: 'flex', alignItems: 'center', marginLeft: 48 }}>
-            <img src="/mainlogo.png" alt="Main Logo" style={{ height: 650, width: 'auto', marginLeft: '3cm', marginTop: '-2cm' }} />
+          {/* Center Middle: Mountain Illustration Animation */}
+          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+            <img src="/mountain-illustration.png" alt="Mountain Climb" className="mountain-anim" style={{ height: 553, width: 'auto', margin: '0 4.5cm', filter: 'drop-shadow(0 8px 24px rgba(44, 62, 80, 0.12))' }} />
           </div>
         </div>
       </section>
@@ -455,63 +447,41 @@ const LandingPage = () => {
           }
         }
         @media (max-width: 1024px) {
+          .first-section-responsive {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            min-height: unset !important;
+          }
           .first-section-main-row {
             flex-direction: column !important;
             align-items: center !important;
             gap: 1.2rem !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            width: 100vw !important;
-            margin-top: 0 !important;
-          }
-          .first-section-main-row > div,
-          .first-section-main-row img {
-            min-width: 0 !important;
-            width: 100% !important;
+            padding: 0 !important;
             margin: 0 !important;
-            text-align: center !important;
-            position: static !important;
-          }
-          .first-section-main-row img {
-            max-width: 95vw !important;
-            height: auto !important;
-            display: block !important;
-            margin: 0.5rem auto !important;
-            flex-shrink: 1 !important;
-          }
-          .first-section-main-row a {
-            width: 95vw !important;
-            max-width: 350px !important;
-            margin: 0.5rem auto !important;
-            display: block !important;
-            text-align: center !important;
-            font-size: 1.1rem !important;
-          }
-          .first-section-main-row > div {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 0.7rem !important;
-            width: 100% !important;
+            width: 100vw !important;
           }
           .first-section-heading {
-            margin-top: 1.2rem !important;
+            margin-top: 0.5rem !important;
             margin-bottom: 0.5rem !important;
             font-size: 2.2rem !important;
             text-align: center !important;
+            padding: 0 !important;
           }
           .first-section-logos {
-            margin-bottom: 0.5rem !important;
+            margin: 0 !important;
             gap: 1.2rem !important;
             flex-wrap: wrap !important;
             justify-content: center !important;
+            align-items: center !important;
           }
           .first-section-registration {
-            margin-bottom: 0.5rem !important;
-            gap: 0.5rem !important;
+            margin: 0 !important;
+            gap: 1.2rem !important;
             flex-direction: column !important;
             align-items: center !important;
+            justify-content: center !important;
           }
           .first-section-hero-row {
             flex-direction: column !important;
@@ -519,6 +489,7 @@ const LandingPage = () => {
             gap: 1.2rem !important;
             width: 100% !important;
             margin: 0 !important;
+            padding: 0 !important;
           }
           .first-section-hero-row > div {
             width: 100% !important;
@@ -527,23 +498,21 @@ const LandingPage = () => {
             align-items: center !important;
             margin: 0 !important;
             flex-direction: column !important;
+            gap: 0 !important;
           }
           .first-section-hero-row img {
             max-width: 80vw !important;
             height: auto !important;
-            margin: 0.5rem auto !important;
+            margin: 0 auto !important;
             display: block !important;
+            padding: 0 !important;
           }
-          /* General section padding for all sections */
           section {
             padding-left: 0.5rem !important;
             padding-right: 0.5rem !important;
-            padding-top: 2rem !important;
-            padding-bottom: 2rem !important;
-          }
-          h1, h2, h3, h4 {
-            word-break: break-word;
-            font-size: 1.2em !important;
+            padding-top: 1.2rem !important;
+            padding-bottom: 1.2rem !important;
+            margin-bottom: 0 !important;
           }
         }
         @media (max-width: 900px) {
@@ -563,23 +532,20 @@ const LandingPage = () => {
           .first-section-main-row {
             gap: 0.7rem !important;
           }
-          .first-section-main-row img {
-            max-width: 98vw !important;
-          }
-          .first-section-main-row a {
-            max-width: 98vw !important;
-            font-size: 1rem !important;
-            padding: 0.5rem 1rem !important;
-          }
           .first-section-heading {
             font-size: 1.3rem !important;
-            margin-top: 0.7rem !important;
+            margin-top: 0.2rem !important;
+            margin-bottom: 0.2rem !important;
+          }
+          .first-section-hero-row img {
+            max-width: 95vw !important;
           }
           section {
             padding-left: 0.1rem !important;
             padding-right: 0.1rem !important;
             padding-top: 0.7rem !important;
             padding-bottom: 0.7rem !important;
+            margin-bottom: 0 !important;
           }
         }
         /* Responsive grid for highlights, program structure, etc. */
@@ -600,6 +566,36 @@ const LandingPage = () => {
           max-width: 100%;
           height: auto;
           display: block;
+        }
+        @keyframes floatLogo {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-18px); }
+        }
+        @keyframes sketchReveal {
+          0% {
+            filter: blur(8px) grayscale(1) brightness(1.5);
+            opacity: 0;
+            clip-path: inset(100% 0 0 0);
+          }
+          60% {
+            filter: blur(2px) grayscale(0.5) brightness(1.1);
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+          }
+          100% {
+            filter: blur(0) grayscale(0) brightness(1);
+            opacity: 1;
+            clip-path: inset(0 0 0 0);
+          }
+        }
+        @keyframes floatMountain {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-18px); }
+        }
+        .mountain-anim {
+          animation: sketchReveal 2.5s cubic-bezier(0.77,0,0.175,1) 0s 1 both, floatMountain 4s ease-in-out infinite alternate;
+          filter: drop-shadow(0 8px 24px rgba(44, 62, 80, 0.12));
+          will-change: transform, opacity;
         }
       `}</style>
     </div>
