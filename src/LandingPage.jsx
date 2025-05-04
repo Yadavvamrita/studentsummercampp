@@ -5,19 +5,6 @@ import "./LandingPage.css";
 import "./index.css";
 
 const LandingPage = () => {
-  // Hero section background transition state
-  const [heroBgIndex, setHeroBgIndex] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setHeroBgIndex((prev) => (prev === 0 ? 1 : 0));
-    }, 4000); // 4 seconds per image
-    return () => clearInterval(interval);
-  }, []);
-  const heroBgImages = [
-    "/per1.jpg",
-    "/per2.jpg"
-  ];
-
   // Modal state for highlights images
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState("");
@@ -29,143 +16,91 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Redesigned Hero Section to match provided image exactly */}
-      <section style={{ minHeight: '100vh', background: '#fff', padding: 0, margin: 0 }}>
-        {/* Top row: Dream Advance logo (left), IIITD logo (center), Registration buttons (right) */}
+      {/* Top Section (reverted to previous state) */}
+      <section
+        className="first-section-responsive"
+        style={{
+          width: '100vw',
+          height: 'auto',
+          background: '#fff',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
+          margin: 0,
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-start',
+          padding: 0,
+          paddingBottom: '-10cm',
+        }}
+      >
         <div
+          className="first-section-main-row"
           style={{
             width: '100%',
-            maxWidth: 1400,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            marginTop: 24,
-            marginBottom: 8,
-            position: 'relative',
-            zIndex: 101,
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
+            paddingLeft: 32,
+            paddingRight: 32,
           }}
-          className="first-section-top-row"
         >
-          {/* Dream Advance logo on the left */}
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
-            <img src="/logo.png" alt="Dream Advance Logo" style={{ height: 100, width: 'auto' }} />
+          {/* sc20252.png - left, moved 2cm right and up by 1cm */}
+          <img src="/sc20252.png" alt="Summer Camp 2025" style={{ height: 200, width: 'auto', flexShrink: 0, marginLeft: '2cm', marginTop: '-1cm' }} />
+
+          {/* Center: Logo group, reduced size and moved right */}
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 32, marginLeft: '2cm' }}>
+            <img src="/Dasc.png" alt="Dream Advance" style={{ height: 90, width: 'auto', flexShrink: 0, marginLeft: '1cm', marginTop: '-1cm' }} />
           </div>
-          {/* IIITD logo in the center, bigger and shifted left by 2cm */}
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
-            <img src="/name.jpg" alt="IIIT Delhi Logo" style={{ height: 90, width: 'auto', display: 'block', position: 'relative', left: '-2cm' }} />
-          </div>
-          {/* Registration buttons on the right */}
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 24 }}>
-            <div style={{ background: '#f1f7fe', borderRadius: 8, padding: '8px 20px', display: 'inline-block', border: '3px solid #3399ff', fontWeight: 600 }}>
-              <a href="/register" style={{ fontSize: '1.15rem', color: '#111', textDecoration: 'none', fontWeight: 800 }}>Student Registration</a>
-            </div>
-            <div style={{ background: '#f3fcf6', borderRadius: 8, padding: '8px 20px', display: 'inline-block', border: '3px solid #4caf50', fontWeight: 600 }}>
-              <a href="/host-camp" style={{ fontSize: '1.15rem', color: '#111', textDecoration: 'none', fontWeight: 800 }}>School/Society Registration</a>
-            </div>
+
+          {/* Registration Buttons - right */}
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: '2cm', marginTop: '-1cm' }}>
+            <a href="/register" style={{ background: 'none', height: 48, display: 'flex', alignItems: 'center', padding: '0 32px', fontWeight: 600, fontSize: '1.1rem', color: '#111', textDecoration: 'none', boxShadow: '0 1px 4px rgba(51,153,255,0.07)', border: 'none', borderRadius: 0, whiteSpace: 'nowrap', outline: 'none' }}>Student Registration</a>
+            <a href="/host-camp" style={{ background: 'none', height: 48, display: 'flex', alignItems: 'center', padding: '0 32px', fontWeight: 600, fontSize: '1.1rem', color: '#111', textDecoration: 'none', boxShadow: '0 1px 4px rgba(76,175,80,0.07)', border: 'none', borderRadius: 0, whiteSpace: 'nowrap' }}>School/Society Registration</a>
           </div>
         </div>
-        <style>{`
-          @media (max-width: 900px) {
-            .first-section-top-row {
-              flex-direction: column !important;
-              align-items: center !important;
-              gap: 1.5rem !important;
-            }
-            .first-section-top-row > div {
-              flex: none !important;
-              width: 100% !important;
-              justify-content: center !important;
-              margin-left: 0 !important;
-              margin-right: 0 !important;
-            }
-            .first-section-top-row img[alt='IIIT Delhi Logo'] {
-              left: 0 !important;
-              margin: 0 auto !important;
-            }
-            .first-section-top-row img[alt='Dream Advance Logo'] {
-              margin: 0 auto 0.5rem auto !important;
-              height: 70px !important;
-            }
-            .first-section-top-row div[style*='gap: 24px'] {
-              flex-direction: column !important;
-              gap: 0.7rem !important;
-              align-items: center !important;
-            }
-          }
-        `}</style>
-        {/* Main content row: event details and illustration */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            maxWidth: 1200,
-            margin: '40px auto 0 auto',
-            minHeight: 420,
-          }}
-          className="first-section-main-row"
-        >
-          {/* Left: Event details */}
-          <div style={{ flex: 1, minWidth: 350, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', height: '100%', marginTop: '8cm' }}>
-            {/* SC3 Logo above content */}
-            <img src="/sc3logo.jpg" alt="SC3 Logo" style={{ height: 300, width: 'auto', alignSelf: 'center', marginBottom: 24, marginTop: '-7cm' }} />
-            <div style={{ fontSize: '1.6rem', color: '#111', fontWeight: 700, marginBottom: 8, marginLeft: 'calc(8px + 3.5cm)', lineHeight: 1.2, marginTop: '2cm' }}>
-              Organized by Dream Advance in<br />
-              collaboration with IIIT Delhi<br />
-              Innovation & Incubation Center
-            </div>
+      </section>
+
+      {/* Custom Hero Section as per user image and description */}
+      <section style={{ minHeight: '100vh', background: '#fff', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+        {/* Middle Row: Logos and Name */}
+        <div style={{ width: '100%', maxWidth: 1200, margin: '0 auto', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 48 }}>
+          {/* Center: sc3logoc.png */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <img src="/sc3logoc.png" alt="SC3 Logo" style={{ height: 420, width: 'auto', marginBottom: 8, marginTop: '-3cm', marginLeft: '2cm' }} />
           </div>
-          {/* Right: Illustration */}
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', minWidth: 350, marginTop: 'calc(1.5cm + 2cm - 2cm - 1cm - 4cm - 5cm + 2cm + 1cm + 4cm + 2cm)', marginLeft: '2cm' }}>
-            <img src="/main illustration.png" alt="Mountain Illustration" style={{ width: '100%', maxWidth: 900, background: '#fcfcf7', borderRadius: 6, boxSizing: 'border-box' }} />
-            {/* Event details below illustration */}
-            <div style={{ fontSize: '1.05rem', color: '#111', fontWeight: 600, marginTop: '24px', marginLeft: 8, textAlign: 'center', width: '100%' }}>
-              Venue: IIIT Delhi Campus, New Delhi
-            </div>
-            <ul style={{ fontSize: '1.05rem', color: '#111', fontWeight: 500, margin: 0, paddingLeft: 0, marginBottom: 0, textAlign: 'center', width: '100%', listStyle: 'none' }}>
-              <li>Batch 1: 25th May – 5th June 2025</li>
-              <li>Batch 2: 15th June – 25th June 2025</li>
-            </ul>
-            <div style={{ fontSize: '1.05rem', color: '#111', fontWeight: 500, marginTop: 4, marginLeft: 8, textAlign: 'center', width: '100%' }}>
-              Time: 09:00 AM – 12:00 PM
-            </div>
+          {/* Right of Center: mainlogo.png */}
+          <div style={{ display: 'flex', alignItems: 'center', marginLeft: 48 }}>
+            <img src="/mainlogo.png" alt="Main Logo" style={{ height: 650, width: 'auto', marginLeft: '3cm', marginTop: '-2cm' }} />
           </div>
         </div>
-        <style>{`
-          @media (max-width: 1024px) {
-            .first-section-main-row {
-              flex-direction: column !important;
-              align-items: center !important;
-              gap: 2rem !important;
-            }
-            .first-section-main-row > div {
-              min-width: 0 !important;
-              width: 100% !important;
-              margin-left: 0 !important;
-              margin-right: 0 !important;
-              margin-top: 0 !important;
-            }
-            .first-section-main-row img[alt='SC3 Logo'] {
-              height: 180px !important;
-              margin-top: 0 !important;
-            }
-            .first-section-main-row img[alt='Mountain Illustration'] {
-              max-width: 100vw !important;
-              margin-top: 1.2rem !important;
-            }
-            .first-section-main-row div[style*='marginLeft: \'2cm\''] {
-              margin-left: 0 !important;
-            }
-            .first-section-main-row div[style*='marginLeft: \'calc(8px + 3.5cm)\''] {
-              margin-left: 0 !important;
-              text-align: center !important;
-            }
-          }
-        `}</style>
+      </section>
+
+      {/* Summer Camp IIITD 2024 Info Section */}
+      <section style={{ width: '100vw', minHeight: 'auto', background: '#949494', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '40px 0' }}>
+        <div style={{ background: '#fff', borderRadius: '24px', boxShadow: '0 2px 16px rgba(0,0,0,0.18)', maxWidth: 1000, width: '100%', padding: '2.5rem 2.5rem 2.5rem 2.5rem', margin: '0 1rem', textAlign: 'left' }}>
+          <h1 style={{ fontFamily: 'inherit', fontWeight: 900, color: '#3b5be4', fontSize: '2.5rem', textAlign: 'center', marginBottom: '1.2rem', letterSpacing: '1px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.7rem' }}>
+            <span role="img" aria-label="sun">🌞</span> Dream Advance Summer Camp 2025
+          </h1>
+          <div style={{ fontSize: '1.1rem', color: '#222', marginBottom: '1.2rem', fontWeight: 500, textAlign: 'center' }}>
+            Organized by Dream Advance in collaboration with <b>IIIT Delhi Innovation & Incubation Center</b><br />
+            <b>Venue:</b> IIIT Delhi Campus, New Delhi
+          </div>
+          <div style={{ fontSize: '1.1rem', color: '#222', marginBottom: '1.2rem', textAlign: 'center' }}>
+            <b>Dates:</b><br />
+            Batch 1: 25th May – 5th June 2025<br />
+            Batch 2: 15th June – 25th June 2025<br />
+            <b>Time:</b> 09:00 AM – 12:00 PM
+          </div>
+          <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#2563eb', marginBottom: '0.7rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span role="img" aria-label="about">🧩</span> About the Camp
+          </h2>
+          <p style={{ marginBottom: '1.2rem', color: '#444' }}>
+            The Dream Advance Summer Camp 2025 is an immersive, project-based learning experience aimed at nurturing curiosity and creativity in school students (Grade III and above). Hosted at the prestigious IIIT Delhi Campus, this 10-day residential camp offers two exciting tracks focusing on emerging technologies through fun, hands-on activities.<br /><br />
+            Aligned with NEP 2020 and NCF 2023, Dream Advance bridges the gap between textbook learning and real-world application by introducing students to Robotics, IoT, AI, Drone Tech, and more — all under the guidance of expert mentors from IITs and NITs.
+          </p>
+        </div>
       </section>
 
       {/* Program Structure & Tracks */}
@@ -497,61 +432,174 @@ const LandingPage = () => {
 
       {/* Global responsive overrides for any inline styles */}
       <style>{`
-        @media (max-width: 900px) {
-          .first-section-top-row {
-            flex-direction: column !important;
-            align-items: center !important;
-            gap: 1.5rem !important;
-          }
-          .first-section-top-row > div {
-            flex: none !important;
-            width: 100% !important;
-            justify-content: center !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-          }
-          .first-section-top-row img[alt='IIIT Delhi Logo'] {
-            left: 0 !important;
-            margin: 0 auto !important;
-          }
-          .first-section-top-row img[alt='Dream Advance Logo'] {
-            margin: 0 auto 0.5rem auto !important;
-            height: 70px !important;
-          }
-          .first-section-top-row div[style*='gap: 24px'] {
-            flex-direction: column !important;
-            gap: 0.7rem !important;
-            align-items: center !important;
+        html, body {
+          max-width: 100vw;
+          overflow-x: hidden;
+        }
+        .container-custom {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        section {
+          width: 100vw;
+          box-sizing: border-box;
+        }
+        @media (max-width: 1200px) {
+          .container-custom {
+            max-width: 98vw;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
           }
         }
         @media (max-width: 1024px) {
           .first-section-main-row {
             flex-direction: column !important;
             align-items: center !important;
-            gap: 2rem !important;
+            gap: 1.2rem !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            width: 100vw !important;
+            margin-top: 0 !important;
           }
-          .first-section-main-row > div {
+          .first-section-main-row > div,
+          .first-section-main-row img {
             min-width: 0 !important;
             width: 100% !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            margin-top: 0 !important;
+            margin: 0 !important;
+            text-align: center !important;
+            position: static !important;
           }
-          .first-section-main-row img[alt='SC3 Logo'] {
-            height: 180px !important;
-            margin-top: 0 !important;
+          .first-section-main-row img {
+            max-width: 95vw !important;
+            height: auto !important;
+            display: block !important;
+            margin: 0.5rem auto !important;
+            flex-shrink: 1 !important;
           }
-          .first-section-main-row img[alt='Mountain Illustration'] {
-            max-width: 100vw !important;
+          .first-section-main-row a {
+            width: 95vw !important;
+            max-width: 350px !important;
+            margin: 0.5rem auto !important;
+            display: block !important;
+            text-align: center !important;
+            font-size: 1.1rem !important;
+          }
+          .first-section-main-row > div {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.7rem !important;
+            width: 100% !important;
+          }
+          .first-section-heading {
             margin-top: 1.2rem !important;
-          }
-          .first-section-main-row div[style*='marginLeft: \'2cm\''] {
-            margin-left: 0 !important;
-          }
-          .first-section-main-row div[style*='marginLeft: \'calc(8px + 3.5cm)\''] {
-            margin-left: 0 !important;
+            margin-bottom: 0.5rem !important;
+            font-size: 2.2rem !important;
             text-align: center !important;
           }
+          .first-section-logos {
+            margin-bottom: 0.5rem !important;
+            gap: 1.2rem !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+          }
+          .first-section-registration {
+            margin-bottom: 0.5rem !important;
+            gap: 0.5rem !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .first-section-hero-row {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 1.2rem !important;
+            width: 100% !important;
+            margin: 0 !important;
+          }
+          .first-section-hero-row > div {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            margin: 0 !important;
+            flex-direction: column !important;
+          }
+          .first-section-hero-row img {
+            max-width: 80vw !important;
+            height: auto !important;
+            margin: 0.5rem auto !important;
+            display: block !important;
+          }
+          /* General section padding for all sections */
+          section {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+          }
+          h1, h2, h3, h4 {
+            word-break: break-word;
+            font-size: 1.2em !important;
+          }
+        }
+        @media (max-width: 900px) {
+          .container-custom {
+            max-width: 100vw;
+            padding-left: 0.2rem;
+            padding-right: 0.2rem;
+          }
+          section {
+            padding-left: 0.2rem !important;
+            padding-right: 0.2rem !important;
+            padding-top: 1.2rem !important;
+            padding-bottom: 1.2rem !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .first-section-main-row {
+            gap: 0.7rem !important;
+          }
+          .first-section-main-row img {
+            max-width: 98vw !important;
+          }
+          .first-section-main-row a {
+            max-width: 98vw !important;
+            font-size: 1rem !important;
+            padding: 0.5rem 1rem !important;
+          }
+          .first-section-heading {
+            font-size: 1.3rem !important;
+            margin-top: 0.7rem !important;
+          }
+          section {
+            padding-left: 0.1rem !important;
+            padding-right: 0.1rem !important;
+            padding-top: 0.7rem !important;
+            padding-bottom: 0.7rem !important;
+          }
+        }
+        /* Responsive grid for highlights, program structure, etc. */
+        @media (max-width: 900px) {
+          .grid, .grid-cols-1, .md\:grid-cols-2, .lg\:grid-cols-3 {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.2rem !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .grid, .grid-cols-1, .md\:grid-cols-2, .lg\:grid-cols-3 {
+            gap: 0.7rem !important;
+          }
+        }
+        /* Responsive images in all sections */
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
         }
       `}</style>
     </div>
