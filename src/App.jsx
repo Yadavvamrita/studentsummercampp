@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import RegistrationSuccess from './components/RegistrationSuccess';
 import HostCamp from './components/HostCamp';
 
+
 function App() {
   return (
     <Router>
@@ -20,6 +21,7 @@ function App() {
               <main className="flex-grow">
                 <Routes>
                   <Route path="/" element={<LandingPage />} />
+                  
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<SignUp />} />
                   <Route path="/registration-success" element={<RegistrationSuccess />} />

@@ -21,7 +21,7 @@ const LandingPage = () => {
         className="first-section-responsive"
         style={{
           width: '100vw',
-          height: '100vh',
+          paddingBottom: '70px',
           background: '#fff',
           boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
           margin: 0,
@@ -31,50 +31,36 @@ const LandingPage = () => {
           padding: 0,
         }}
       >
-        {/* Top Row */}
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%', padding: '24px 32px 0 32px' }}>
-          {/* Top Left: Title */}
-          <div style={{ flex: '0 0 320px', textAlign: 'left', marginTop: 0, marginLeft: '1cm' }}>
-            <span style={{
-              fontFamily: 'Montserrat, Poppins, Arial, sans-serif',
-              fontWeight: 600,
-              color: '#2563eb',
-              fontSize: '2.1rem',
-              letterSpacing: '0.04em',
-              textTransform: 'uppercase',
-              lineHeight: 1.0,
-              whiteSpace: 'nowrap'
-            }}>SUMMER CAMP 2025</span>
+        <div>
+          <div className="flex justify-between flex-wrap  px-10 pt-5">
+            <div className="font-semibold italic text-3xl pl-10 text-blue-700 text-left">Summer camp 2025</div>
+            <div className="flex gap-2 text-xl flex-wrap  justify-center  pl-2 ">
+              <div className="bg-blue-100 p-2  mr-4 rounded-xl">student registration</div>
+              <div className="bg-blue-100 ml-4 rounded-xl p-2">School/Society Registration</div>
+            </div>
           </div>
-          {/* Top Center: Logos */}
-          <div style={{ flex: '1 1 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img 
-              src="/Dascc.png" 
-              alt="Dream Advance" 
-              style={{ 
-                height: 195.51, // Current height
-                width: 'auto', 
-                marginRight: 18, 
-                marginLeft: '1cm', 
-                marginTop: '-1.3cm' // Moved 1 cm upward (previously -0.3cm)
-              }} 
-            />
+          <div className="flex justify-center flex-wrap">
+            <img src="Dascc.png" alt="image" className="w-[28.2rem]" />
           </div>
-          {/* Top Right: Registration Buttons */}
-          <div style={{ flex: '0 0 auto', display: 'flex', flexDirection: 'row', gap: 8 }}>
-            <a href="/register" style={{ background: '#f5fffa', fontWeight: 700, fontSize: '1.1rem', color: '#111', textDecoration: 'none', padding: '8px 18px', borderRadius: 4, boxShadow: '0 1px 4px rgba(51,153,255,0.07)' }}>Student Registration</a>
-            <a href="/host-camp" style={{ background: '#f5fffa', fontWeight: 700, fontSize: '1.1rem', color: '#111', textDecoration: 'none', padding: '8px 18px', borderRadius: 4, boxShadow: '0 1px 4px rgba(76,175,80,0.07)' }}>School/Society Registration</a>
-          </div>
-        </div>
-        {/* Center Row: Main Images */}
-        <div style={{ display: 'flex', flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%', gap: 32 }}>
-          {/* Center Left: Summer Camp Logo */}
-          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-            <img src="/sc3logoc.png" alt="Summer Camp 2025" style={{ height: 306, width: 'auto', marginLeft: '7.5cm', marginTop: '-2cm', animation: 'floatLogo 2.5s ease-in-out infinite alternate' }} />
-          </div>
-          {/* Center Middle: Mountain Illustration Animation */}
-          <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-            <img src="/mountain-illustration.png" alt="Mountain Climb" className="mountain-anim" style={{ height: 553, width: 'auto', margin: '0 4.5cm', filter: 'drop-shadow(0 8px 24px rgba(44, 62, 80, 0.12))' }} />
+          <div className="flex justify-center flex-wrap gap-20">
+            <div className="p-x-20">
+              <img src="sc3logoc.png" alt="image" className="w-[500px]" />
+              <span className="text-3xl flex justify-center font-semibold font-sans text-black">From Curiosity to Creation <br /> - Your Summer Start Here</span>
+
+
+              <div className="text-xl  flex justify-center 
+              ">
+
+                Batch 1: 25th May – 5th June 2025 <br />
+                Batch 2: 15th June – 25th June 2025 <br />
+                Time: 09:00 AM – 12:00 PM
+              </div>
+
+
+            </div>
+            <div className="flex items-baseline">
+              <img src="mountain-illustration.png" alt="" className="w-[700px] pt-10" />
+            </div>
           </div>
         </div>
       </section>
@@ -116,7 +102,7 @@ const LandingPage = () => {
           <p className="text-base sm:text-lg text-center text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 animate-fade-in-up delay-150">
             Over the course of 10 days, students can choose between two learning tracks. Each track includes theoretical sessions, guided hands-on activities, group projects, competitions, and flying/demo sessions.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:bg-yellow-50 active:scale-95 cursor-pointer">
               <h3 className="text-2xl font-bold mb-6">🚀 Track 1: Robotics + IoT + Artificial Intelligence</h3>
@@ -196,7 +182,7 @@ const LandingPage = () => {
           <h3 className="text-xl md:text-2xl text-blue-600 font-bold text-center mb-12 animate-fade-in-up delay-150">
             Students from Class IV to Class XII who are:
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-orange-50 rounded-2xl p-6 md:p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-transparent hover:border-orange-400 transition-colors active:border-yellow-500 animate-fade-in-up delay-200 cursor-pointer group h-full flex flex-col">
               <div className="flex-1 flex items-center justify-center mb-6 overflow-hidden w-full">
@@ -312,7 +298,7 @@ const LandingPage = () => {
           <h2 className="text-4xl font-playfair font-bold text-center mb-12 bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text drop-shadow-lg transition-all duration-700">Camp Fee & Offers</h2>
           <div className="max-w-3xl mx-auto text-center text-white space-y-4">
             <p className="text-2xl font-bold">
-              Standard Fee: <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text transition-all duration-700">₹9590 9500 + GST</span> (inclusive of kits & materials)
+              Standard Fee: <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text transition-all duration-700">₹9500 + GST</span> (inclusive of kits & materials)
             </p>
             <p className="text-2xl font-bold">
               Early Bird Discount: <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text transition-all duration-700">₹1000 off</span> (Till 15th May 2025)
