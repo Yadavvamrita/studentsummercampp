@@ -17,59 +17,53 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Top Section (reverted to previous state) */}
-      <section
-        className="first-section-responsive"
-        style={{
-          width: '100vw',
-          paddingBottom: '90px',
-          background: '#fff',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
-          margin: 0,
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-          padding: 0,
-        }}
-      >
-        <div>
-          <div className="flex justify-between flex-wrap  px-10 pt-5">
-            <div className="font-semibold italic text-3xl pl-10 text-blue-700 text-left">Summer camp 2025</div>
-            <div className="flex gap-2 text-xl flex-wrap  justify-center  pl-2 ">
-              <div className="bg-blue-100 p-2  mr-4 rounded-xl">student registration</div>
-              <div className="bg-blue-100 ml-4 rounded-xl p-2">School/Society Registration</div>
-            </div>
-          </div>
-          <div className="flex justify-center flex-wrap">
-            <img src="Dascc.png" alt="image" className="w-[28.2rem]" />
-          </div>
-          <div className="flex justify-center flex-wrap gap-20">
-            <div className="p-x-20">
-              <img src="sc3logoc.png" alt="image" className="w-[500px]" />
-              <span className="text-3xl flex justify-center font-semibold font-sans text-black">From Curiosity to Creation <br /> - Your Summer Start Here</span>
+      <section className="w-screen pb-16 bg-white shadow-md m-0 overflow-hidden flex flex-col">
+  <div>
+    {/* Top Bar */}
+    <div className="flex justify-between flex-wrap px-10 pt-5">
+      <div className="font-semibold italic text-3xl pl-10 text-blue-700 text-center sm:text-left">
+        Summer Camp 2025
+      </div>
+      <div className="flex gap-4 text-xl flex-wrap justify-center pl-2">
+        <div className="bg-blue-100 p-2 rounded-xl">Student Registration</div>
+        <div className="bg-blue-100 p-2 rounded-xl">School/Society Registration</div>
+      </div>
+    </div>
 
+    {/* Main Image */}
+    <div className="flex justify-center flex-wrap mt-6">
+      <img src="Dascc.png" alt="Summer Camp" className="w-[28.2rem]" />
+    </div>
 
-              <div className="text-xl  flex justify-center 
-              ">
-
-                Batch 1: 25th May – 5th June 2025 <br />
-                Batch 2: 15th June – 25th June 2025 <br />
-                Time: 09:00 AM – 12:00 PM
-              </div>
-
-
-            </div>
-            <div className="flex items-baseline">
-              <img src="mountain-illustration.png" alt="" className="w-[700px] pt-10" />
-            </div>
-          </div>
+    {/* Logos and Info */}
+    <div className="flex justify-center flex-wrap gap-20">
+      {/* Left Side: Logo and Text */}
+      <div className="text-center max-w-md">
+        <img src="sc3logoc.png" alt="Logo" className="w-[500px] mx-auto" />
+        <p className="text-3xl font-semibold font-sans text-black mt-4">
+          From Curiosity to Creation <br /> – Your Summer Starts Here
+        </p>
+        <div className="text-md text-gray-700 mt-2">
+          Batch 1: 25th May – 5th June 2025 <br />
+          Batch 2: 15th June – 25th June 2025 <br />
+          Time: 09:00 AM – 12:00 PM
         </div>
-      </section>
+      </div>
+
+      {/* Right Side: Illustration */}
+      <div className="flex items-start pt-10 sm:ml-[50px]">
+        <img src="mountain-illustration.png" alt="Mountain Illustration" className="w-[700px]" />
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Summer Camp IIITD 2024 Info Section */}
       <section style={{ width: '100vw', minHeight: 'auto', background: '#949494', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '40px 0' }}>
         <div style={{ background: '#fff', borderRadius: '24px', boxShadow: '0 2px 16px rgba(0,0,0,0.18)', maxWidth: 1000, width: '100%', padding: '2.5rem 2.5rem 2.5rem 2.5rem', margin: '0 1rem', textAlign: 'left' }}>
           <h1 style={{ fontFamily: 'inherit', fontWeight: 900, color: '#3b5be4', fontSize: '2.5rem', textAlign: 'center', marginBottom: '1.2rem', letterSpacing: '1px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.7rem' }}>
-            <span role="img" aria-label="sun">🌞</span> Dream Advance Summer Camp 2025
+            <span role="img" aria-label="sun"></span> Dream Advance Summer Camp 2025
           </h1>
           <div style={{ fontSize: '1.1rem', color: '#222', marginBottom: '1.2rem', fontWeight: 500, textAlign: 'center' }}>
             Organized by Dream Advance in collaboration with <b>IIIT Delhi Innovation & Incubation Center</b><br />
