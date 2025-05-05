@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RegistrationLinks from "./components/RegistrationLinks";
 import "./LandingPage.css";
 import "./index.css";
 
+
 const LandingPage = () => {
+
+  const navigate = useNavigate();
+  const handleOnClick = () => {
+    navigate("/student-registration");
+  }
+
+  const handleOnClickForm = () => {
+      navigate("/school-registration");
+  }
   // Modal state for highlights images
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImg, setModalImg] = useState("");
@@ -25,8 +35,8 @@ const LandingPage = () => {
         Summer Camp 2025
       </div>
       <div className="flex gap-4 text-xl flex-wrap justify-center pl-2">
-        <div className="bg-blue-100 p-2 rounded-xl">Student Registration</div>
-        <div className="bg-blue-100 p-2 rounded-xl">School/Society Registration</div>
+        <button className="bg-blue-100 p-2 rounded-xl cursor-pointer" onClick={handleOnClick}>Student Registration</button>
+        <button className="bg-blue-100 p-2 rounded-xl cursor-pointer" onClick={handleOnClickForm}>School/Society Registration</button>
       </div>
     </div>
 

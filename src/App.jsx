@@ -6,6 +6,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import RegistrationSuccess from './components/RegistrationSuccess';
 import HostCamp from './components/HostCamp';
+import SchoolRegistration from './components/SchoolRegistration';
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
                   <Route path="/registration-success" element={<RegistrationSuccess />} />
                   <Route path="/program-structure" element={<LandingPage />} />
                   <Route path="/camp-fee" element={<LandingPage />} />
+                  <Route path='/student-registration' element={<StudentRegistration/>}/>
+                  <Route path='/school-registration' element={<SchoolRegistration/>}/>
                 </Routes>
               </main>
             }
