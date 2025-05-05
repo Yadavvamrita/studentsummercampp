@@ -21,7 +21,7 @@ const LandingPage = () => {
         className="first-section-responsive"
         style={{
           width: '100vw',
-          paddingBottom: '70px',
+          paddingBottom: '90px',
           background: '#fff',
           boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
           margin: 0,
