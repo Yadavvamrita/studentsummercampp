@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { db } from '../firebase'; // adjust path if needed
+import { collection, addDoc } from 'firebase/firestore';
 
+// Reusable components
 const Input = ({ label, ...props }) => (
   <div className="mb-4">
     <label className="block mb-1 font-medium text-gray-700">{label}</label>
@@ -58,28 +61,28 @@ const RegistrationForm = () => {
     heardFrom: '',
   });
 
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
-  const navigate = useNavigate();
-  const handleSubmitButton = () => {
-    navigate("/")
-    window.scrollTo(0, 0);
-  }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitted Form:', form);
-    // Submit logic here (API, Firebase, etc.)
+    try {
+      await addDoc(collection(db, "registrations"), form);
+      alert("Form submitted successfully!");
+      navigate("/");
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center px-4 py-10"
-    >
+    <div className="min-h-screen bg-cover bg-center flex items-center justify-center px-4 py-10">
       <div className="bg-white bg-opacity-90 backdrop-blur-md p-8 rounded-xl shadow-2xl max-w-4xl w-full">
         <h1 className="text-3xl font-bold text-blue-700 mb-2">Host the DreamAdvance Summer Camp!</h1>
         <p className="text-gray-600 mb-6">
@@ -87,7 +90,6 @@ const RegistrationForm = () => {
         </p>
 
         <form onSubmit={handleSubmit}>
-
           {/* Section 1: Organizer Details */}
           <fieldset className="border border-gray-200 rounded-xl p-6 mb-6">
             <legend className="text-lg font-semibold text-blue-600">Section 1: Organizer Details</legend>
@@ -169,7 +171,6 @@ const RegistrationForm = () => {
 
           <button
             type="submit"
-            onClick={handleSubmitButton}
             className="w-full py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition duration-200"
           >
             Submit Registration
