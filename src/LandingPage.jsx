@@ -27,70 +27,46 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Top Section (reverted to previous state) */}
-      <section className="w-screen pb-16 mb-10 bg-white shadow-md m-0 overflow-hidden flex flex-col">
+      <section className="w-screen pb-16 bg-white shadow-md m-0 overflow-hidden flex flex-col">
   <div>
     {/* Top Bar */}
-    <div className="flex justify-between flex-wrap px-10 pt-5 items-center">
-      {/* Logo Image - shift 3cm right on large screens */}
-      <div className="flex justify-center sm:justify-start w-full sm:w-auto pl-0 sm:pl-10 mb-4 sm:mb-0">
-        <img 
-          src="/Summer Camp 2k25.png" 
-          alt="Summer Camp 2k25" 
-          className="h-20 sm:h-20 object-contain mx-auto sm:mx-0 lg:ml-[114px]" 
-        />
+    <div className="flex justify-between flex-wrap px-10 pt-5">
+      <div className="font-semibold italic text-3xl pl-10 text-blue-700 text-center sm:text-left">
+        Summer Camp 2025
       </div>
-
-      {/* Buttons */}
       <div className="flex gap-4 text-xl flex-wrap justify-center pl-2">
-        <button 
-          className="bg-blue-100 p-2 rounded-xl cursor-pointer border border-gray-400 hover:bg-blue-200 transition"
-          onClick={handleOnClick}
-        >
-          Student Registration
-        </button>
-        <button 
-          className="bg-blue-100 p-2 rounded-xl cursor-pointer border border-gray-400 hover:bg-blue-200 transition"
-          onClick={handleOnClickForm}
-        >
-          School/Society Registration
-        </button>
+        <button className="bg-blue-100 p-2 rounded-xl cursor-pointer" onClick={handleOnClick}>Student Registration</button>
+        <button className="bg-blue-100 p-2 rounded-xl cursor-pointer" onClick={handleOnClickForm}>School/Society Registration</button>
       </div>
     </div>
 
-    {/* Center Graphic */}
-    <div className="flex justify-center flex-wrap mt-6 sm:-mt-[45px]">
+    {/* Main Image */}
+    <div className="flex justify-center flex-wrap mt-6">
       <img src="Dascc.png" alt="Summer Camp" className="w-[28.2rem]" />
     </div>
 
-    {/* Content Row */}
-    <div className="flex justify-center flex-wrap gap-20 mt-6">
-      {/* Left Section */}
+    {/* Logos and Info */}
+    <div className="flex justify-center flex-wrap gap-20">
+      {/* Left Side: Logo and Text */}
       <div className="text-center max-w-md">
         <img src="sc3logoc.png" alt="Logo" className="w-[500px] mx-auto" />
         <p className="text-3xl font-semibold font-sans text-black mt-4">
           From Curiosity to Creation <br /> – Your Summer Starts Here
         </p>
-        <div className="text-md text-gray-700 mt-2 leading-relaxed">
+        <div className="text-md text-gray-700 mt-2">
           Batch 1: 25th May – 5th June 2025 <br />
           Batch 2: 15th June – 25th June 2025 <br />
           Time: 09:00 AM – 12:00 PM
         </div>
       </div>
 
-      {/* Right Illustration */}
+      {/* Right Side: Illustration */}
       <div className="flex items-start pt-10 sm:ml-[50px]">
-        <img 
-          src="mountain-illustration.png" 
-          alt="Mountain Illustration" 
-          className="w-[700px]" 
-        />
+        <img src="mountain-illustration.png" alt="Mountain Illustration" className="w-[700px]" />
       </div>
     </div>
   </div>
 </section>
-
-
-
 
 
       {/* Summer Camp IIITD 2024 Info Section */}
