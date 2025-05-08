@@ -29,7 +29,7 @@ function App() {
                   <Route path="/program-structure" element={<LandingPage />} />
                   <Route path="/camp-fee" element={<LandingPage />} />
                   <Route path='/student-registration' element={<StudentRegistration/>}/>
-                  <Route path='/school-registration' element={<SchoolRegistration/>}/>
+                  <Route path='/school-registration' element={<HostCamp/>}/>
                 </Routes>
               </main>
             }
