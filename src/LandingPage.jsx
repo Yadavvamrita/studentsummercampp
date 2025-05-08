@@ -55,7 +55,7 @@ const LandingPage = () => {
         </p>
         <div className="text-md text-gray-700 mt-2">
            <br />
-          Starting from 1st June 2025 <br />
+         <b> Starting from 1st June 2025</b> <br />
           
         </div>
       </div>
@@ -80,7 +80,7 @@ const LandingPage = () => {
             <b>Venue:</b> IIIT Delhi Campus, New Delhi
           </div>
           <div style={{ fontSize: '1.1rem', color: '#222', marginBottom: '1.2rem', textAlign: 'center' }}>
-            <b>Dates:</b><br />
+            <b>Dates:</b>
             Starting from 1st June<br />
            <b>Time:</b> 09:00 AM – 12:00 PM
           </div>
