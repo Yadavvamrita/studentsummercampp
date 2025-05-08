@@ -305,11 +305,10 @@ const LandingPage = () => {
               Standard Fee: <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text transition-all duration-700">₹9500 + GST</span> (inclusive of kits & materials)
             </p>
             <p className="text-2xl font-bold">
-              Early Bird Discount: <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text transition-all duration-700">₹1000 off</span> (Till 15th May 2025)
+              Early Bird Discount: <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-400 text-transparent bg-clip-text transition-all duration-700">₹1500 off</span> (Till 15th May 2025)
             </p>
-            <p className="text-xl mt-8 font-bold">Batch Options:</p>
-            <p className="text-lg">Batch 1: 25 May – 5 June 2025</p>
-            <p className="text-lg">Batch 2: 15 June – 25 June 2025</p>
+            <p className="text-xl mt-8 font-bold">Dates: 1st June To 10th June</p>
+          
             <p className="text-lg italic text-yellow-200 mt-6">Limited seats per batch. First come, first served basis.</p>
           </div>
         </div>
