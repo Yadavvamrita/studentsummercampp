@@ -54,9 +54,9 @@ const LandingPage = () => {
           From Curiosity to Creation <br /> – Your Summer Starts Here
         </p>
         <div className="text-md text-gray-700 mt-2">
-          Batch 1: 25th May – 5th June 2025 <br />
-          Batch 2: 15th June – 25th June 2025 <br />
-          Time: 09:00 AM – 12:00 PM
+           <br />
+          Starting from 1st June 2025 <br />
+          
         </div>
       </div>
 
@@ -81,9 +81,8 @@ const LandingPage = () => {
           </div>
           <div style={{ fontSize: '1.1rem', color: '#222', marginBottom: '1.2rem', textAlign: 'center' }}>
             <b>Dates:</b><br />
-            Batch 1: 25th May – 5th June 2025<br />
-            Batch 2: 15th June – 25th June 2025<br />
-            <b>Time:</b> 09:00 AM – 12:00 PM
+            Starting from 1st June<br />
+           <b>Time:</b> 09:00 AM – 12:00 PM
           </div>
           <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#2563eb', marginBottom: '0.7rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span role="img" aria-label="about">🧩</span> About the Camp
