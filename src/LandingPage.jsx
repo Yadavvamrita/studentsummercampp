@@ -34,9 +34,15 @@ const LandingPage = () => {
       <div className="font-semibold italic text-3xl pl-10 text-blue-700 text-center sm:text-left">
         Summer Camp 2025
       </div>
-      <div className="flex gap-4 text-xl flex-wrap justify-center pl-2">
-        <button className="bg-blue-100 p-2 rounded-xl cursor-pointer" onClick={handleOnClick}>Student Registration</button>
-        <button className="bg-blue-100 p-2 rounded-xl cursor-pointer" onClick={handleOnClickForm}>School/Society Registration</button>
+      <div className="flex gap-4 text-xl flex-wrap justify-center ml-6">
+        <a
+          href="https://pages.razorpay.com/cgcamp"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-blue-700 text-white px-4 py-2 rounded-xl cursor-pointer text-center hover:bg-blue-800 transition"
+        >
+          Payment
+        </a>
       </div>
     </div>
 
@@ -54,9 +60,8 @@ const LandingPage = () => {
           From Curiosity to Creation <br /> – Your Summer Starts Here
         </p>
         <div className="text-md text-gray-700 mt-2">
-           <br />
-         <b> Starting from 1st June 2025</b> <br />
-          
+          <br />
+          <b> Starting from 1st June 2025</b> <br />
         </div>
       </div>
 
@@ -67,6 +72,7 @@ const LandingPage = () => {
     </div>
   </div>
 </section>
+
 
 
       {/* Summer Camp IIITD 2024 Info Section */}
@@ -180,7 +186,7 @@ const LandingPage = () => {
       <section className="py-16 bg-white">
         <div className="container-custom">
           <h2 className="section-title animate-fade-in-up">
-            <span className="bg-gradient-to-r from-yellow-500 via-orange-500 to-pink-500 text-transparent bg-clip-text font-extrabold typewriter-heading">Who Can Participate?</span>
+            <span className="section-title drop-shadow-lg text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-yellow-500 via-orange-500 to-yellow-500 text-transparent bg-clip-text" style={{ paddingBottom: '0.5em' }}>Who Can Participate?</span>
           </h2>
           <h3 className="text-xl md:text-2xl text-blue-600 font-bold text-center mb-12 animate-fade-in-up delay-150">
             Students from Class IV to Class XII who are:
@@ -334,8 +340,8 @@ const LandingPage = () => {
       {/* Camp Coordinators Section */}
       <section className="py-16 bg-gray-100">
         <div className="container-custom max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold mb-2 drop-shadow-lg animate-fade-in-up flex items-center justify-center gap-3">
-            <span className="text-3xl">🎓</span> <span className="typewriter-coord">Camp Coordinators</span>
+          <h2 className="text-4xl font-extrabold mb-2 drop-shadow-lg animate-fade-in-up flex items-center justify-center gap-3 ">
+            <span className="text-3xl">🎓</span> <span className="typewriter-coord" >Camp Coordinators</span>
           </h2>
           <p className="text-lg text-gray-700 mb-8 animate-fade-in-up delay-150">For any queries, feel free to reach out to:</p>
           <div className="bg-white/90 border-2 border-yellow-200 rounded-3xl shadow-2xl p-10 mb-6 mx-auto max-w-xl animate-fade-in-up delay-300 flex flex-col items-center gap-2">
@@ -354,7 +360,7 @@ const LandingPage = () => {
       {/* Why Choose Dream Advance Section */}
       <section className="py-16 bg-blue-50">
         <div className="container-custom max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-playfair flex items-center justify-center gap-3">
+          <h2 className="text-4xl font-extrabold mb-2 drop-shadow-lg animate-fade-in-up flex items-center justify-center gap-3 ">
             <span className="typewriter-dream">Why Choose Dream Advance?</span>
           </h2>
           <div className="grid md:grid-cols-2 gap-8 text-left">
