@@ -35,14 +35,23 @@ const LandingPage = () => {
         Summer Camp 2025
       </div>
       <div className="flex gap-4 text-xl flex-wrap justify-center ml-6">
+        {/* Student Registration (new payment link) */}
         <a
-          href="https://pages.razorpay.com/cgcamp"
+          href="https://rzp.io/rzp/cgcamp"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-blue-700 text-white px-4 py-2 rounded-xl cursor-pointer text-center hover:bg-blue-800 transition"
         >
           Student Registration
         </a>
+
+        {/* School/Society Registration (uses function) */}
+        <button
+          className="bg-blue-700 text-white px-4 py-2 rounded-xl cursor-pointer text-center hover:bg-blue-800 transition"
+          onClick={handleOnClickForm}
+        >
+          School/Society Registration
+        </button>
       </div>
     </div>
 
@@ -72,6 +81,7 @@ const LandingPage = () => {
     </div>
   </div>
 </section>
+
 
 
 
