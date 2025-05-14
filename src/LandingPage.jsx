@@ -41,7 +41,7 @@ const LandingPage = () => {
           rel="noopener noreferrer"
           className="bg-blue-700 text-white px-4 py-2 rounded-xl cursor-pointer text-center hover:bg-blue-800 transition"
         >
-          Payment
+          Student Registration
         </a>
       </div>
     </div>
